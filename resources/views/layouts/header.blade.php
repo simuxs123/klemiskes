@@ -15,8 +15,6 @@
            
            <li id="headerbutai"><p>|</p><img id="butaistogelis" class="stogelis" src="{{asset('images\stogelis.png')}}"><a href="/pirmasd" id="abutai">Butai</a></li>
            
-           <li id="headerkotedzai"><p>|</p><img id="kotedzaistogelis" class="stogelis" src="{{asset('images\stogelis.png')}}"><a id="akotedzai" href="/kotedzas" >Kotedžai</a></li>
-           
            <li id="headervieta"><p>|</p><img id="vietastogelis" class="stogelis" src="{{asset('images\stogelis.png')}}"><a href="/vieta" id="avieta">Vieta mieste</a></li>
 
            <li id="headerkontaktai"><p>|</p><img id="kontaktaistogelis" class="stogelis" src="{{asset('images\stogelis.png')}}"><a id="akontaktai" href="/kontaktai" >Kontaktai</a></li>

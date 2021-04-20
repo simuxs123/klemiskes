@@ -29,7 +29,6 @@
             </li>
     </ul>
 </li>
-<li class="dropdown1"><a href="{{ route ('cpkotedzai')}}">Kotedžai</a></li>
 
                                 
 

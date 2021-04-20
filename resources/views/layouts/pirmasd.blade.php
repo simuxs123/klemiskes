@@ -1,17 +1,6 @@
 @extends('layouts.master')
 @section('main')
 <div class="selectbar">
-  <div class="kotedzai">
-    <h3>Kotedžai:</h3>
-    <ul>
-     <a href="/kotedzas/1"><li>kotedžas nr.1</li></a>
-      <a href="/kotedzas/2"><li>kotedžas nr.2</li></a>
-      <a href="/kotedzas/3"><li>kotedžas nr.3</li></a>
-      <a href="/kotedzas/4"><li>kotedžas nr.4</li></a>
-      <a href="/kotedzas/5"><li>kotedžas nr.5</li></a>
-      <a href="/kotedzas/6"><li>kotedžas nr.6</li></a>
-    </ul>
-  </div>
   <div class="namai">
     <h3>Namai:</h3>
     <ul>
