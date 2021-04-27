@@ -1834,6 +1834,1151 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./resources/assets/js/app.js":
+/*!************************************!*\
+  !*** ./resources/assets/js/app.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
+__webpack_require__(/*! ./bootstrap */ "./resources/assets/js/bootstrap.js");
+
+__webpack_require__(/*! ion-rangeslider */ "./node_modules/ion-rangeslider/js/ion.rangeSlider.js"); // window.Vue = require('vue');
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// const app = new Vue({
+//     el: '#app'
+// });
+//     console.log('yra')
+
+
+if (document.getElementById('map') !== null) {
+  window.initMap = function () {
+    var centriukas = {
+      lat: 55.715408,
+      lng: 21.161441
+    };
+    var myLatlng = {
+      lat: 55.716326,
+      lng: 21.175647
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14.4,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: centriukas,
+      scrollwheel: false,
+      zoomControl: true,
+      scaleControl: false,
+      disableDoubleClickZoom: false
+    });
+    var contentString = '<div id="content">' + '<div id="siteNotice">' + '</div>' + '<h5 id="firstHeading" class="firstHeading">Klemiskes Namai</h5>' + '<div id="bodyContent">';
+    '</div>' + '</div>';
+    var vietalogo = '/images/trecias.png';
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      icon: vietalogo
+    });
+    map.addListener('mouseover', function () {
+      infowindow.open(map, marker);
+    });
+    map.addListener('mouseout', function () {
+      infowindow.close();
+    });
+    google.maps.event.addListenerOnce(map, 'idle', function () {
+      google.maps.event.trigger(map, 'resize');
+    });
+    var senamiestis = '/images/building1.png';
+    var senamiestisMarker = new google.maps.Marker({
+      position: {
+        lat: 55.7074239,
+        lng: 21.1333682
+      },
+      map: map,
+      icon: senamiestis
+    });
+    contentString2 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Senamiestis.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 5.1 km. ' + '' + '</div>' + '</div>';
+    var senamiestisinfowindow = new google.maps.InfoWindow({
+      content: contentString2
+    });
+    senamiestisMarker.addListener('click', function () {
+      senamiestisinfowindow.open(senamiestis, senamiestisMarker);
+    });
+    var slengmok = '/images/school1.png';
+    var slengmokMarker = new google.maps.Marker({
+      position: {
+        lat: 55.7192398,
+        lng: 21.1782899
+      },
+      map: map,
+      icon: slengmok
+    });
+    contentString3 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Klaipėdos r. Slengiu mokykla.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 700 m. ' + '' + '</div>' + '</div>';
+    var slengmokinfowindow = new google.maps.InfoWindow({
+      content: contentString3
+    });
+    slengmokMarker.addListener('click', function () {
+      slengmokinfowindow.open(slengmok, slengmokMarker);
+    });
+    var valskol = '/images/kolegija1.png';
+    var valskolMarker = new google.maps.Marker({
+      position: {
+        lat: 55.7259046,
+        lng: 21.1731293
+      },
+      map: map,
+      icon: valskol
+    });
+    contentString4 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Klaipėdos valstybinė kolegija.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 1.5 km. ' + '' + '</div>' + '</div>';
+    var valskolinfowindow = new google.maps.InfoWindow({
+      content: contentString4
+    });
+    valskolMarker.addListener('click', function () {
+      valskolinfowindow.open(valskol, valskolMarker);
+    });
+    var stotele = '/images/bus-stop1.png';
+    var stoteleMarker = new google.maps.Marker({
+      position: {
+        lat: 55.717886,
+        lng: 21.168475
+      },
+      map: map,
+      icon: stotele
+    });
+    contentString5 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Autobusu stotele.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 200 m. ' + '' + '</div>' + '</div>';
+    var stoteleinfowindow = new google.maps.InfoWindow({
+      content: contentString5
+    });
+    stoteleMarker.addListener('click', function () {
+      stoteleinfowindow.open(stotele, stoteleMarker);
+    });
+    var dviraciu = '/images/bike1.png';
+    var dviraciuMarker = new google.maps.Marker({
+      position: {
+        lat: 55.720543,
+        lng: 21.169634
+      },
+      map: map,
+      icon: dviraciu,
+      optimized: false
+    });
+    contentString5 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Dviračių takas.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 200 m. ' + '' + '</div>' + '</div>';
+    var dviraciuinfowindow = new google.maps.InfoWindow({
+      content: contentString5
+    });
+    dviraciuMarker.addListener('click', function () {
+      dviraciuinfowindow.open(dviraciu, dviraciuMarker);
+    });
+    var liepug = '/images/road1.png';
+    var liepugMarker = new google.maps.Marker({
+      position: {
+        lat: 55.72595,
+        lng: 21.1644842
+      },
+      map: map,
+      icon: liepug,
+      optimized: false
+    });
+    contentString6 = '<div id="placemarkContent1" class="placemarkContent" >' + '<h5 id="headContent1" class="placemarkHead">' + 'Liepų g.' + '</h5>' + '<div id="bodyContent1"  class="placemarkBody">' + 'Atstumas: 1.2 km. ' + '' + '</div>' + '</div>';
+    var liepuginfowindow = new google.maps.InfoWindow({
+      content: contentString6
+    });
+    liepugMarker.addListener('click', function () {
+      liepuginfowindow.open(liepug, liepugMarker);
+    });
+    var myoverlay = new google.maps.OverlayView();
+
+    myoverlay.draw = function () {
+      this.getPanes().markerLayer.id = 'markerLayer';
+      console.log(markerLayer.id);
+    };
+
+    myoverlay.setMap(map);
+  };
+}
+
+if (document.getElementById('projektoimg4') !== null) {
+  window.initMap = function () {
+    var centriukas = {
+      lat: 55.715408,
+      lng: 21.161441
+    };
+    var myLatlng = {
+      lat: 55.716326,
+      lng: 21.175647
+    };
+    var map1 = new google.maps.Map(document.getElementById('projektoimg4'), {
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      center: myLatlng,
+      scrollwheel: false,
+      zoomControl: true,
+      scaleControl: false,
+      disableDoubleClickZoom: false
+    });
+    var contentString1 = '<div id="content">' + '<div id="siteNotice">' + '</div>' + '<h5 id="firstHeading" class="firstHeading">Klemiskes Namai</h5>' + '<div id="bodyContent">';
+    '</div>' + '</div>'; // var vietalogo = '/images/mapologo.png';
+
+    var infowindow1 = new google.maps.InfoWindow({
+      content: contentString1
+    });
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map1
+    });
+    map1.addListener('mouseover', function () {
+      infowindow1.open(map1, marker);
+    });
+    map1.addListener('mouseout', function () {
+      infowindow1.close();
+    });
+    google.maps.event.addListenerOnce(map1, 'idle', function () {
+      google.maps.event.trigger(map1, 'resize');
+    });
+  };
+}
+
+var $range = $(".js-range-slider"),
+    inputFrom = $(".js-input-from"),
+    inputTo = $(".js-input-to"),
+    min = inputFrom.val(),
+    max = inputTo.val(),
+    from = inputFrom.val(),
+    to = inputTo.val();
+$(function () {
+  $(".js-range-slider").ionRangeSlider({
+    skin: 'big',
+    type: "double",
+    min: min,
+    max: max,
+    from: from,
+    to: to,
+    onStart: updateInputs,
+    onChange: updateInputs,
+    onFinish: updateInputs
+  });
+
+  function updateInputs(data) {
+    from = data.from;
+    to = data.to;
+    inputFrom.prop("value", from);
+    inputTo.prop("value", to);
+  }
+});
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+var chunkArray = function chunkArray(arr, chunk_size) {
+  var results = [];
+
+  while (arr.length) {
+    results.push(arr.splice(0, chunk_size));
+  }
+
+  return results;
+};
+
+var namai = function namai(arr, namas) {
+  $.each(arr, function (index, value) {
+    if (index === 9) {
+      return;
+    }
+
+    if (value.statusas === 0) {
+      $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "transparent");
+    } else if (value.statusas === 1) {
+      $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "transparent");
+    } else {
+      $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "transparent");
+    }
+  });
+  $.each(arr, function (index, value) {
+    if (index === 9) {
+      return;
+    }
+
+    $("#".concat(namas + (index + 1))).mouseover(function () {
+      if (value.statusas === 0) {
+        $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "#ccffcc");
+      } else if (value.statusas === 1) {
+        $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "#ff6666");
+      } else {
+        $("#".concat(namas + (index + 1))).attr('d', value.cords).css("fill", "#f4f442");
+      }
+    });
+    $("#".concat(namas + (index + 1))).mouseout(function () {
+      $("#".concat(namas + (index + 1))).css({
+        fill: "transparent"
+      });
+    });
+  });
+};
+
+var namuInfo = function namuInfo(houseData) {
+  var laisvi = [0, 0, 0];
+  var rezervuota = [0, 0, 0];
+  var parduota = [0, 0, 0];
+  $.each(houseData, function (index, value) {
+    if (index === 3) {
+      return;
+    }
+
+    $.each(value, function (i, val) {
+      if (val.statusas === 0) {
+        laisvi[value.length - 1 - index]++;
+      } else if (value.statusas === 1) {
+        parduota[val.length - 1 - index]++;
+      } else {
+        rezervuota[value.length - 1 - index]++;
+      }
+    });
+  });
+  return [laisvi, rezervuota, parduota];
+};
+
+$(document).ready(function () {
+  $(".filter-form").submit(function (event) {
+    var values = $(this).serialize();
+
+    if ($('tr').hasClass('data-row')) {
+      $(".data-row").remove();
+    }
+
+    $.ajax({
+      type: "post",
+      url: "/filtras",
+      data: values,
+      success: function success(data) {
+        $('.rezultatai').fadeIn();
+        $.each(data, function (i, value) {
+          var statusas;
+
+          if (value.statusas === 0) {
+            statusas = "Laisvas";
+          } else if (value.statusas === 1) {
+            statusas = "Parduotas";
+          } else {
+            statusas = "Rezervuotas";
+          }
+
+          var htmlTr = "<tr data-href=\"/namas/".concat(value.namo_id, "/").concat(value.auksto_id, "/").concat(value.buto_id, "\" class=\"data-row\"> \n                                    <td class=\"text-left\">").concat(value.namo_id, "</td>\n                                    <td class=\"text-left\">").concat(value.auksto_id, "</td>\n                                    <td class=\"text-left\">").concat(value.kambariai, "</td>\n                                    <td class=\"text-left\">").concat(value.plotas, "</td>\n                                    <td class=\"text-left\">").concat(value.kryptis, "</td>\n                                    <td class=\"text-left\">").concat(value.kaina, "</td>\n                                    <td class=\"text-left\">").concat(statusas, "</td>\n                                  </tr>");
+          $('.filter-body').append(htmlTr);
+          $('.data-row').click(function () {
+            window.location.href = $(this).data('href');
+          });
+          $('.data-row').css('cursor', 'pointer');
+        });
+      },
+      error: function (_error) {
+        function error(_x) {
+          return _error.apply(this, arguments);
+        }
+
+        error.toString = function () {
+          return _error.toString();
+        };
+
+        return error;
+      }(function (error) {
+        console.log("klaida");
+        console.log(error);
+      })
+    });
+    event.preventDefault();
+  });
+});
+
+window.onload = function () {
+  //pirmas namas
+  $.ajax({
+    url: '/pirmas',
+    method: 'get',
+    data: {},
+    success: function success(data) {
+      namai(data, 'pirmas');
+    },
+    error: function (_error2) {
+      function error() {
+        return _error2.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error2.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log("klaida");
+      console.log(error);
+    })
+  });
+  $.ajax({
+    url: '/pirmas',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      var visiDuomenys = _toConsumableArray(data);
+
+      var arrayPagalAuksta = chunkArray(visiDuomenys, 3);
+
+      var _namuInfo = namuInfo(arrayPagalAuksta),
+          _namuInfo2 = _slicedToArray(_namuInfo, 3),
+          laisvas = _namuInfo2[0],
+          rezervuotas = _namuInfo2[1],
+          parduotas = _namuInfo2[2];
+
+      var laisvas1 = document.querySelectorAll('.laisvas1');
+      var rezervuotas1 = document.querySelectorAll('.rezervuotas1');
+      var parduotas1 = document.querySelectorAll('.parduotas1');
+      laisvas1.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Laisvų: ' + laisvas[i];
+        }
+      });
+      rezervuotas1.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Rezervuotų: ' + rezervuotas[i];
+        }
+      });
+      parduotas1.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Parduotų: ' + parduotas[i];
+        }
+      });
+      var pirmox = document.getElementById('pirmolaisvi');
+
+      if (pirmox) {
+        var p = data[9][0] ? data[9][0] : "0";
+        pirmox.innerHTML = 'Laisvų: ' + p;
+      }
+
+      var pirmoy = document.getElementById('pirmorezervuoti');
+
+      if (pirmoy) {
+        var _p = data[9][2] ? data[9][2] : "0";
+
+        pirmoy.innerHTML = 'Rezervuotų: ' + _p;
+      }
+
+      var pirmoz = document.getElementById('pirmoparduoti');
+
+      if (pirmoz) {
+        var _p2 = data[9][1] ? data[9][1] : "0";
+
+        pirmoz.innerHTML = 'Parduotų: ' + _p2;
+      }
+    },
+    error: function (_error3) {
+      function error() {
+        return _error3.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error3.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log("klaida");
+      console.log(error);
+    })
+  }); // //antras namas
+  //
+  //
+
+  $.ajax({
+    url: '/antras',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      namai(data, 'antras');
+    },
+    error: function (_error4) {
+      function error() {
+        return _error4.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error4.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  });
+  $.ajax({
+    url: '/antras',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      var visiDuomenys = _objectSpread({}, data);
+
+      var arrayPagalAuksta = chunkArray(visiDuomenys, 3);
+
+      var _namuInfo3 = namuInfo(arrayPagalAuksta),
+          _namuInfo4 = _slicedToArray(_namuInfo3, 3),
+          laisvas = _namuInfo4[0],
+          rezervuotas = _namuInfo4[1],
+          parduotas = _namuInfo4[2];
+
+      var laisvas2 = document.querySelectorAll('.laisvas2');
+      var rezervuotas2 = document.querySelectorAll('.rezervuotas2');
+      var parduotas2 = document.querySelectorAll('.parduotas2');
+      laisvas2.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Laisvų: ' + laisvas[i];
+        }
+      });
+      rezervuotas2.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Rezervuotų: ' + rezervuotas[i];
+        }
+      });
+      parduotas2.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Parduotų: ' + parduotas[i];
+        }
+      });
+      var antrox = document.getElementById('antrolaisvi');
+
+      if (antrox) {
+        var p = data[9][0] ? data[9][0] : "0";
+        antrox.innerHTML = 'Laisvų: ' + p;
+      }
+
+      var antroy = document.getElementById('antrorezervuoti');
+
+      if (antroy) {
+        var _p3 = data[9][2] ? data[9][2] : "0";
+
+        antroy.innerHTML = 'Rezervuotų: ' + _p3;
+      }
+
+      var antroz = document.getElementById('antroparduoti');
+
+      if (antroz) {
+        var _p4 = data[9][1] ? data[9][1] : "0";
+
+        antroz.innerHTML = 'Parduotų: ' + _p4;
+      }
+    },
+    error: function (_error5) {
+      function error() {
+        return _error5.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error5.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  }); //
+  // //trecias namas
+  //
+  //
+
+  $.ajax({
+    url: '/trecias',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      namai(data, 'trecias');
+    },
+    error: function (_error6) {
+      function error() {
+        return _error6.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error6.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  }); //
+
+  $.ajax({
+    url: '/trecias',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      var visiDuomenys = _objectSpread({}, data);
+
+      var arrayPagalAuksta = chunkArray(visiDuomenys, 3);
+
+      var _namuInfo5 = namuInfo(arrayPagalAuksta),
+          _namuInfo6 = _slicedToArray(_namuInfo5, 3),
+          laisvas = _namuInfo6[0],
+          rezervuotas = _namuInfo6[1],
+          parduotas = _namuInfo6[2];
+
+      var laisvas3 = document.querySelectorAll('.laisvas3');
+      var rezervuotas3 = document.querySelectorAll('.rezervuotas3');
+      var parduotas3 = document.querySelectorAll('.parduotas3');
+      laisvas3.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Laisvų: ' + laisvas[i];
+        }
+      });
+      rezervuotas3.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Rezervuotų: ' + rezervuotas[i];
+        }
+      });
+      parduotas3.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Parduotų: ' + parduotas[i];
+        }
+      });
+      var treciox = document.getElementById('treciolaisvi');
+
+      if (treciox) {
+        var p = data[9][0] ? data[9][0] : "0";
+        treciox.innerHTML = 'Laisvų: ' + p;
+      }
+
+      var trecioy = document.getElementById('treciorezervuoti');
+
+      if (trecioy) {
+        var _p5 = data[9][2] ? data[9][2] : "0";
+
+        trecioy.innerHTML = 'Rezervuotų: ' + _p5;
+      }
+
+      var trecioz = document.getElementById('trecioparduoti');
+
+      if (trecioz) {
+        var _p6 = data[9][1] ? data[9][1] : "0";
+
+        trecioz.innerHTML = 'Parduotų: ' + _p6;
+      }
+    },
+    error: function (_error7) {
+      function error() {
+        return _error7.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error7.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  }); //
+  // //ketvirtas namas
+  //
+  //
+
+  $.ajax({
+    url: '/ketvirtas',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      namai(data, 'ketvirtas');
+    },
+    error: function (_error8) {
+      function error() {
+        return _error8.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error8.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  }); //
+
+  $.ajax({
+    url: '/ketvirtas',
+    method: 'GET',
+    data: {},
+    success: function success(data) {
+      var visiDuomenys = _objectSpread({}, data);
+
+      var arrayPagalAuksta = chunkArray(visiDuomenys, 3);
+
+      var _namuInfo7 = namuInfo(arrayPagalAuksta),
+          _namuInfo8 = _slicedToArray(_namuInfo7, 3),
+          laisvas = _namuInfo8[0],
+          rezervuotas = _namuInfo8[1],
+          parduotas = _namuInfo8[2];
+
+      var laisvas4 = document.querySelectorAll('.laisvas4');
+      var rezervuotas4 = document.querySelectorAll('.rezervuotas4');
+      var parduotas4 = document.querySelectorAll('.parduotas4');
+      laisvas4.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Laisvų: ' + laisvas[i];
+        }
+      });
+      rezervuotas4.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Rezervuotų: ' + rezervuotas[i];
+        }
+      });
+      parduotas4.forEach(function (el, i) {
+        if (el) {
+          el.innerHTML = 'Parduotų: ' + parduotas[i];
+        }
+      });
+      var ketvirtox = document.getElementById('ketvirtolaisvi');
+
+      if (ketvirtox) {
+        var p = data[9][0] ? data[9][0] : "0";
+        ketvirtox.innerHTML = 'Laisvų: ' + p;
+      }
+
+      var ketvirtoy = document.getElementById('ketvirtorezervuoti');
+
+      if (ketvirtoy) {
+        var _p7 = data[9][2] ? data[9][2] : "0";
+
+        ketvirtoy.innerHTML = 'Rezervuotų: ' + _p7;
+      }
+
+      var ketvirtoz = document.getElementById('ketvirtoparduoti');
+
+      if (ketvirtoz) {
+        var _p8 = data[9][1] ? data[9][1] : "0";
+
+        ketvirtoz.innerHTML = 'Parduotų: ' + _p8;
+      }
+    },
+    error: function (_error9) {
+      function error() {
+        return _error9.apply(this, arguments);
+      }
+
+      error.toString = function () {
+        return _error9.toString();
+      };
+
+      return error;
+    }(function () {
+      console.log(error);
+    })
+  }); //
+  //svg
+
+  var mouseListener = document.querySelectorAll('.mouseListener');
+  var showPopup = document.querySelectorAll('.showPopup');
+  mouseListener.forEach(function (el, i) {
+    if (el !== null && el !== undefined) {
+      el.addEventListener("mouseover", function () {
+        // console.log('uzsidejo');
+        el.style.fill = "#1a2b87";
+        showPopup[i].style.display = "block";
+      });
+      el.addEventListener("mouseout", function () {
+        el.style.fill = "transparent";
+        showPopup[i].style.display = "none";
+      });
+    }
+  }); //stogelio img vir navigacijos
+
+  var headerStogas = document.querySelectorAll(".headerStogas");
+  var stogelis = document.querySelectorAll(".stogelis");
+  headerStogas.forEach(function (el, i) {
+    if (el !== null && el !== undefined) {
+      el.addEventListener("mouseover", function () {
+        stogelis[i].style.display = "block";
+      });
+      el.addEventListener("mouseout", function () {
+        stogelis[i].style.display = "none";
+      });
+    }
+  });
+  $(function () {
+    var path = window.location.pathname;
+    var navItem = document.querySelector("a[href='" + path + "']");
+    navItem.classList.add("active");
+  });
+  var butoMouseover = document.querySelectorAll(".butoMouseover");
+  var butoPopup = document.querySelectorAll(".butoPopup");
+  butoMouseover.forEach(function (el, i) {
+    if (el !== null && el !== undefined) {
+      el.addEventListener("mouseover", function () {
+        butoPopup[i].style.display = "block";
+      });
+      el.addEventListener("mouseout", function () {
+        butoPopup[i].style.display = "none";
+      });
+    }
+  });
+  $(document).on('mousemove', function (e) {
+    $('#house1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#house2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#house3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#house4').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#house5').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pirmo1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pirmo2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pirmo3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#antro1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#antro2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#antro3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#trecio1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#trecio2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#trecio3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ketvirto1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ketvirto2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ketvirto3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 120
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pa1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pa2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pa3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pb1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pb2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pb3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pc1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pc2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#pc3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#aa1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#aa2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#aa3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ab1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ab2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ab3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ac1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ac2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ac3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ta1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ta2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ta3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tb1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tb2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tb3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tc1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tc2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#tc3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ka1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ka2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#ka3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kb1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kb2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kb3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kc1').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kc2').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+  $(document).on('mousemove', function (e) {
+    $('#kc3').css({
+      left: e.pageX - 45,
+      top: e.pageY - 130
+    });
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/assets/js/bootstrap.js":
 /*!******************************************!*\
   !*** ./resources/assets/js/bootstrap.js ***!
@@ -4273,6 +5418,2466 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
+
+
+/***/ }),
+
+/***/ "./node_modules/ion-rangeslider/js/ion.rangeSlider.js":
+/*!************************************************************!*\
+  !*** ./node_modules/ion-rangeslider/js/ion.rangeSlider.js ***!
+  \************************************************************/
+/***/ ((module, exports, __webpack_require__) => {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Ion.RangeSlider
+// version 2.3.1 Build: 382
+// © Denis Ineshin, 2019
+// https://github.com/IonDen
+//
+// Project page:    http://ionden.com/a/plugins/ion.rangeSlider/en.html
+// GitHub page:     https://github.com/IonDen/ion.rangeSlider
+//
+// Released under MIT licence:
+// http://ionden.com/a/plugins/licence-en.html
+// =====================================================================================================================
+
+;(function(factory) {
+    if ((typeof jQuery === 'undefined' || !jQuery) && "function" === "function" && __webpack_require__.amdO) {
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (jQuery) {
+            return factory(jQuery, document, window, navigator);
+        }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if ((typeof jQuery === 'undefined' || !jQuery) && typeof exports === "object") {
+        factory(__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"), document, window, navigator);
+    } else {
+        factory(jQuery, document, window, navigator);
+    }
+} (function ($, document, window, navigator, undefined) {
+    "use strict";
+
+    // =================================================================================================================
+    // Service
+
+    var plugin_count = 0;
+
+    // IE8 fix
+    var is_old_ie = (function () {
+        var n = navigator.userAgent,
+            r = /msie\s\d+/i,
+            v;
+        if (n.search(r) > 0) {
+            v = r.exec(n).toString();
+            v = v.split(" ")[1];
+            if (v < 9) {
+                $("html").addClass("lt-ie9");
+                return true;
+            }
+        }
+        return false;
+    } ());
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function bind(that) {
+
+            var target = this;
+            var slice = [].slice;
+
+            if (typeof target != "function") {
+                throw new TypeError();
+            }
+
+            var args = slice.call(arguments, 1),
+                bound = function () {
+
+                    if (this instanceof bound) {
+
+                        var F = function(){};
+                        F.prototype = target.prototype;
+                        var self = new F();
+
+                        var result = target.apply(
+                            self,
+                            args.concat(slice.call(arguments))
+                        );
+                        if (Object(result) === result) {
+                            return result;
+                        }
+                        return self;
+
+                    } else {
+
+                        return target.apply(
+                            that,
+                            args.concat(slice.call(arguments))
+                        );
+
+                    }
+
+                };
+
+            return bound;
+        };
+    }
+    if (!Array.prototype.indexOf) {
+        Array.prototype.indexOf = function(searchElement, fromIndex) {
+            var k;
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
+            var O = Object(this);
+            var len = O.length >>> 0;
+            if (len === 0) {
+                return -1;
+            }
+            var n = +fromIndex || 0;
+            if (Math.abs(n) === Infinity) {
+                n = 0;
+            }
+            if (n >= len) {
+                return -1;
+            }
+            k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+            while (k < len) {
+                if (k in O && O[k] === searchElement) {
+                    return k;
+                }
+                k++;
+            }
+            return -1;
+        };
+    }
+
+
+
+    // =================================================================================================================
+    // Template
+
+    var base_html =
+        '<span class="irs">' +
+        '<span class="irs-line" tabindex="0"></span>' +
+        '<span class="irs-min">0</span><span class="irs-max">1</span>' +
+        '<span class="irs-from">0</span><span class="irs-to">0</span><span class="irs-single">0</span>' +
+        '</span>' +
+        '<span class="irs-grid"></span>';
+
+    var single_html =
+        '<span class="irs-bar irs-bar--single"></span>' +
+        '<span class="irs-shadow shadow-single"></span>' +
+        '<span class="irs-handle single"><i></i><i></i><i></i></span>';
+
+    var double_html =
+        '<span class="irs-bar"></span>' +
+        '<span class="irs-shadow shadow-from"></span>' +
+        '<span class="irs-shadow shadow-to"></span>' +
+        '<span class="irs-handle from"><i></i><i></i><i></i></span>' +
+        '<span class="irs-handle to"><i></i><i></i><i></i></span>';
+
+    var disable_html =
+        '<span class="irs-disable-mask"></span>';
+
+
+
+    // =================================================================================================================
+    // Core
+
+    /**
+     * Main plugin constructor
+     *
+     * @param input {Object} link to base input element
+     * @param options {Object} slider config
+     * @param plugin_count {Number}
+     * @constructor
+     */
+    var IonRangeSlider = function (input, options, plugin_count) {
+        this.VERSION = "2.3.1";
+        this.input = input;
+        this.plugin_count = plugin_count;
+        this.current_plugin = 0;
+        this.calc_count = 0;
+        this.update_tm = 0;
+        this.old_from = 0;
+        this.old_to = 0;
+        this.old_min_interval = null;
+        this.raf_id = null;
+        this.dragging = false;
+        this.force_redraw = false;
+        this.no_diapason = false;
+        this.has_tab_index = true;
+        this.is_key = false;
+        this.is_update = false;
+        this.is_start = true;
+        this.is_finish = false;
+        this.is_active = false;
+        this.is_resize = false;
+        this.is_click = false;
+
+        options = options || {};
+
+        // cache for links to all DOM elements
+        this.$cache = {
+            win: $(window),
+            body: $(document.body),
+            input: $(input),
+            cont: null,
+            rs: null,
+            min: null,
+            max: null,
+            from: null,
+            to: null,
+            single: null,
+            bar: null,
+            line: null,
+            s_single: null,
+            s_from: null,
+            s_to: null,
+            shad_single: null,
+            shad_from: null,
+            shad_to: null,
+            edge: null,
+            grid: null,
+            grid_labels: []
+        };
+
+        // storage for measure variables
+        this.coords = {
+            // left
+            x_gap: 0,
+            x_pointer: 0,
+
+            // width
+            w_rs: 0,
+            w_rs_old: 0,
+            w_handle: 0,
+
+            // percents
+            p_gap: 0,
+            p_gap_left: 0,
+            p_gap_right: 0,
+            p_step: 0,
+            p_pointer: 0,
+            p_handle: 0,
+            p_single_fake: 0,
+            p_single_real: 0,
+            p_from_fake: 0,
+            p_from_real: 0,
+            p_to_fake: 0,
+            p_to_real: 0,
+            p_bar_x: 0,
+            p_bar_w: 0,
+
+            // grid
+            grid_gap: 0,
+            big_num: 0,
+            big: [],
+            big_w: [],
+            big_p: [],
+            big_x: []
+        };
+
+        // storage for labels measure variables
+        this.labels = {
+            // width
+            w_min: 0,
+            w_max: 0,
+            w_from: 0,
+            w_to: 0,
+            w_single: 0,
+
+            // percents
+            p_min: 0,
+            p_max: 0,
+            p_from_fake: 0,
+            p_from_left: 0,
+            p_to_fake: 0,
+            p_to_left: 0,
+            p_single_fake: 0,
+            p_single_left: 0
+        };
+
+
+
+        /**
+         * get and validate config
+         */
+        var $inp = this.$cache.input,
+            val = $inp.prop("value"),
+            config, config_from_data, prop;
+
+        // default config
+        config = {
+            skin: "flat",
+            type: "single",
+
+            min: 10,
+            max: 100,
+            from: null,
+            to: null,
+            step: 1,
+
+            min_interval: 0,
+            max_interval: 0,
+            drag_interval: false,
+
+            values: [],
+            p_values: [],
+
+            from_fixed: false,
+            from_min: null,
+            from_max: null,
+            from_shadow: false,
+
+            to_fixed: false,
+            to_min: null,
+            to_max: null,
+            to_shadow: false,
+
+            prettify_enabled: true,
+            prettify_separator: " ",
+            prettify: null,
+
+            force_edges: false,
+
+            keyboard: true,
+
+            grid: false,
+            grid_margin: true,
+            grid_num: 4,
+            grid_snap: false,
+
+            hide_min_max: false,
+            hide_from_to: false,
+
+            prefix: "",
+            postfix: "",
+            max_postfix: "",
+            decorate_both: true,
+            values_separator: " — ",
+
+            input_values_separator: ";",
+
+            disable: false,
+            block: false,
+
+            extra_classes: "",
+
+            scope: null,
+            onStart: null,
+            onChange: null,
+            onFinish: null,
+            onUpdate: null
+        };
+
+
+        // check if base element is input
+        if ($inp[0].nodeName !== "INPUT") {
+            console && console.warn && console.warn("Base element should be <input>!", $inp[0]);
+        }
+
+
+        // config from data-attributes extends js config
+        config_from_data = {
+            skin: $inp.data("skin"),
+            type: $inp.data("type"),
+
+            min: $inp.data("min"),
+            max: $inp.data("max"),
+            from: $inp.data("from"),
+            to: $inp.data("to"),
+            step: $inp.data("step"),
+
+            min_interval: $inp.data("minInterval"),
+            max_interval: $inp.data("maxInterval"),
+            drag_interval: $inp.data("dragInterval"),
+
+            values: $inp.data("values"),
+
+            from_fixed: $inp.data("fromFixed"),
+            from_min: $inp.data("fromMin"),
+            from_max: $inp.data("fromMax"),
+            from_shadow: $inp.data("fromShadow"),
+
+            to_fixed: $inp.data("toFixed"),
+            to_min: $inp.data("toMin"),
+            to_max: $inp.data("toMax"),
+            to_shadow: $inp.data("toShadow"),
+
+            prettify_enabled: $inp.data("prettifyEnabled"),
+            prettify_separator: $inp.data("prettifySeparator"),
+
+            force_edges: $inp.data("forceEdges"),
+
+            keyboard: $inp.data("keyboard"),
+
+            grid: $inp.data("grid"),
+            grid_margin: $inp.data("gridMargin"),
+            grid_num: $inp.data("gridNum"),
+            grid_snap: $inp.data("gridSnap"),
+
+            hide_min_max: $inp.data("hideMinMax"),
+            hide_from_to: $inp.data("hideFromTo"),
+
+            prefix: $inp.data("prefix"),
+            postfix: $inp.data("postfix"),
+            max_postfix: $inp.data("maxPostfix"),
+            decorate_both: $inp.data("decorateBoth"),
+            values_separator: $inp.data("valuesSeparator"),
+
+            input_values_separator: $inp.data("inputValuesSeparator"),
+
+            disable: $inp.data("disable"),
+            block: $inp.data("block"),
+
+            extra_classes: $inp.data("extraClasses"),
+        };
+        config_from_data.values = config_from_data.values && config_from_data.values.split(",");
+
+        for (prop in config_from_data) {
+            if (config_from_data.hasOwnProperty(prop)) {
+                if (config_from_data[prop] === undefined || config_from_data[prop] === "") {
+                    delete config_from_data[prop];
+                }
+            }
+        }
+
+
+        // input value extends default config
+        if (val !== undefined && val !== "") {
+            val = val.split(config_from_data.input_values_separator || options.input_values_separator || ";");
+
+            if (val[0] && val[0] == +val[0]) {
+                val[0] = +val[0];
+            }
+            if (val[1] && val[1] == +val[1]) {
+                val[1] = +val[1];
+            }
+
+            if (options && options.values && options.values.length) {
+                config.from = val[0] && options.values.indexOf(val[0]);
+                config.to = val[1] && options.values.indexOf(val[1]);
+            } else {
+                config.from = val[0] && +val[0];
+                config.to = val[1] && +val[1];
+            }
+        }
+
+
+
+        // js config extends default config
+        $.extend(config, options);
+
+
+        // data config extends config
+        $.extend(config, config_from_data);
+        this.options = config;
+
+
+
+        // validate config, to be sure that all data types are correct
+        this.update_check = {};
+        this.validate();
+
+
+
+        // default result object, returned to callbacks
+        this.result = {
+            input: this.$cache.input,
+            slider: null,
+
+            min: this.options.min,
+            max: this.options.max,
+
+            from: this.options.from,
+            from_percent: 0,
+            from_value: null,
+
+            to: this.options.to,
+            to_percent: 0,
+            to_value: null
+        };
+
+
+
+        this.init();
+    };
+
+    IonRangeSlider.prototype = {
+
+        /**
+         * Starts or updates the plugin instance
+         *
+         * @param [is_update] {boolean}
+         */
+        init: function (is_update) {
+            this.no_diapason = false;
+            this.coords.p_step = this.convertToPercent(this.options.step, true);
+
+            this.target = "base";
+
+            this.toggleInput();
+            this.append();
+            this.setMinMax();
+
+            if (is_update) {
+                this.force_redraw = true;
+                this.calc(true);
+
+                // callbacks called
+                this.callOnUpdate();
+            } else {
+                this.force_redraw = true;
+                this.calc(true);
+
+                // callbacks called
+                this.callOnStart();
+            }
+
+            this.updateScene();
+        },
+
+        /**
+         * Appends slider template to a DOM
+         */
+        append: function () {
+            var container_html = '<span class="irs irs--' + this.options.skin + ' js-irs-' + this.plugin_count + ' ' + this.options.extra_classes + '"></span>';
+            this.$cache.input.before(container_html);
+            this.$cache.input.prop("readonly", true);
+            this.$cache.cont = this.$cache.input.prev();
+            this.result.slider = this.$cache.cont;
+
+            this.$cache.cont.html(base_html);
+            this.$cache.rs = this.$cache.cont.find(".irs");
+            this.$cache.min = this.$cache.cont.find(".irs-min");
+            this.$cache.max = this.$cache.cont.find(".irs-max");
+            this.$cache.from = this.$cache.cont.find(".irs-from");
+            this.$cache.to = this.$cache.cont.find(".irs-to");
+            this.$cache.single = this.$cache.cont.find(".irs-single");
+            this.$cache.line = this.$cache.cont.find(".irs-line");
+            this.$cache.grid = this.$cache.cont.find(".irs-grid");
+
+            if (this.options.type === "single") {
+                this.$cache.cont.append(single_html);
+                this.$cache.bar = this.$cache.cont.find(".irs-bar");
+                this.$cache.edge = this.$cache.cont.find(".irs-bar-edge");
+                this.$cache.s_single = this.$cache.cont.find(".single");
+                this.$cache.from[0].style.visibility = "hidden";
+                this.$cache.to[0].style.visibility = "hidden";
+                this.$cache.shad_single = this.$cache.cont.find(".shadow-single");
+            } else {
+                this.$cache.cont.append(double_html);
+                this.$cache.bar = this.$cache.cont.find(".irs-bar");
+                this.$cache.s_from = this.$cache.cont.find(".from");
+                this.$cache.s_to = this.$cache.cont.find(".to");
+                this.$cache.shad_from = this.$cache.cont.find(".shadow-from");
+                this.$cache.shad_to = this.$cache.cont.find(".shadow-to");
+
+                this.setTopHandler();
+            }
+
+            if (this.options.hide_from_to) {
+                this.$cache.from[0].style.display = "none";
+                this.$cache.to[0].style.display = "none";
+                this.$cache.single[0].style.display = "none";
+            }
+
+            this.appendGrid();
+
+            if (this.options.disable) {
+                this.appendDisableMask();
+                this.$cache.input[0].disabled = true;
+            } else {
+                this.$cache.input[0].disabled = false;
+                this.removeDisableMask();
+                this.bindEvents();
+            }
+
+            // block only if not disabled
+            if (!this.options.disable) {
+                if (this.options.block) {
+                    this.appendDisableMask();
+                } else {
+                    this.removeDisableMask();
+                }
+            }
+
+            if (this.options.drag_interval) {
+                this.$cache.bar[0].style.cursor = "ew-resize";
+            }
+        },
+
+        /**
+         * Determine which handler has a priority
+         * works only for double slider type
+         */
+        setTopHandler: function () {
+            var min = this.options.min,
+                max = this.options.max,
+                from = this.options.from,
+                to = this.options.to;
+
+            if (from > min && to === max) {
+                this.$cache.s_from.addClass("type_last");
+            } else if (to < max) {
+                this.$cache.s_to.addClass("type_last");
+            }
+        },
+
+        /**
+         * Determine which handles was clicked last
+         * and which handler should have hover effect
+         *
+         * @param target {String}
+         */
+        changeLevel: function (target) {
+            switch (target) {
+                case "single":
+                    this.coords.p_gap = this.toFixed(this.coords.p_pointer - this.coords.p_single_fake);
+                    this.$cache.s_single.addClass("state_hover");
+                    break;
+                case "from":
+                    this.coords.p_gap = this.toFixed(this.coords.p_pointer - this.coords.p_from_fake);
+                    this.$cache.s_from.addClass("state_hover");
+                    this.$cache.s_from.addClass("type_last");
+                    this.$cache.s_to.removeClass("type_last");
+                    break;
+                case "to":
+                    this.coords.p_gap = this.toFixed(this.coords.p_pointer - this.coords.p_to_fake);
+                    this.$cache.s_to.addClass("state_hover");
+                    this.$cache.s_to.addClass("type_last");
+                    this.$cache.s_from.removeClass("type_last");
+                    break;
+                case "both":
+                    this.coords.p_gap_left = this.toFixed(this.coords.p_pointer - this.coords.p_from_fake);
+                    this.coords.p_gap_right = this.toFixed(this.coords.p_to_fake - this.coords.p_pointer);
+                    this.$cache.s_to.removeClass("type_last");
+                    this.$cache.s_from.removeClass("type_last");
+                    break;
+            }
+        },
+
+        /**
+         * Then slider is disabled
+         * appends extra layer with opacity
+         */
+        appendDisableMask: function () {
+            this.$cache.cont.append(disable_html);
+            this.$cache.cont.addClass("irs-disabled");
+        },
+
+        /**
+         * Then slider is not disabled
+         * remove disable mask
+         */
+        removeDisableMask: function () {
+            this.$cache.cont.remove(".irs-disable-mask");
+            this.$cache.cont.removeClass("irs-disabled");
+        },
+
+        /**
+         * Remove slider instance
+         * and unbind all events
+         */
+        remove: function () {
+            this.$cache.cont.remove();
+            this.$cache.cont = null;
+
+            this.$cache.line.off("keydown.irs_" + this.plugin_count);
+
+            this.$cache.body.off("touchmove.irs_" + this.plugin_count);
+            this.$cache.body.off("mousemove.irs_" + this.plugin_count);
+
+            this.$cache.win.off("touchend.irs_" + this.plugin_count);
+            this.$cache.win.off("mouseup.irs_" + this.plugin_count);
+
+            if (is_old_ie) {
+                this.$cache.body.off("mouseup.irs_" + this.plugin_count);
+                this.$cache.body.off("mouseleave.irs_" + this.plugin_count);
+            }
+
+            this.$cache.grid_labels = [];
+            this.coords.big = [];
+            this.coords.big_w = [];
+            this.coords.big_p = [];
+            this.coords.big_x = [];
+
+            cancelAnimationFrame(this.raf_id);
+        },
+
+        /**
+         * bind all slider events
+         */
+        bindEvents: function () {
+            if (this.no_diapason) {
+                return;
+            }
+
+            this.$cache.body.on("touchmove.irs_" + this.plugin_count, this.pointerMove.bind(this));
+            this.$cache.body.on("mousemove.irs_" + this.plugin_count, this.pointerMove.bind(this));
+
+            this.$cache.win.on("touchend.irs_" + this.plugin_count, this.pointerUp.bind(this));
+            this.$cache.win.on("mouseup.irs_" + this.plugin_count, this.pointerUp.bind(this));
+
+            this.$cache.line.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+            this.$cache.line.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+
+            this.$cache.line.on("focus.irs_" + this.plugin_count, this.pointerFocus.bind(this));
+
+            if (this.options.drag_interval && this.options.type === "double") {
+                this.$cache.bar.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "both"));
+                this.$cache.bar.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "both"));
+            } else {
+                this.$cache.bar.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+                this.$cache.bar.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+            }
+
+            if (this.options.type === "single") {
+                this.$cache.single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
+                this.$cache.s_single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
+                this.$cache.shad_single.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+
+                this.$cache.single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
+                this.$cache.s_single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
+                this.$cache.edge.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+                this.$cache.shad_single.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+            } else {
+                this.$cache.single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, null));
+                this.$cache.single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, null));
+
+                this.$cache.from.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.s_from.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.to.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
+                this.$cache.s_to.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
+                this.$cache.shad_from.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+                this.$cache.shad_to.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+
+                this.$cache.from.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.s_from.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.to.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
+                this.$cache.s_to.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
+                this.$cache.shad_from.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+                this.$cache.shad_to.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
+            }
+
+            if (this.options.keyboard) {
+                this.$cache.line.on("keydown.irs_" + this.plugin_count, this.key.bind(this, "keyboard"));
+            }
+
+            if (is_old_ie) {
+                this.$cache.body.on("mouseup.irs_" + this.plugin_count, this.pointerUp.bind(this));
+                this.$cache.body.on("mouseleave.irs_" + this.plugin_count, this.pointerUp.bind(this));
+            }
+        },
+
+        /**
+         * Focus with tabIndex
+         *
+         * @param e {Object} event object
+         */
+        pointerFocus: function (e) {
+            if (!this.target) {
+                var x;
+                var $handle;
+
+                if (this.options.type === "single") {
+                    $handle = this.$cache.single;
+                } else {
+                    $handle = this.$cache.from;
+                }
+
+                x = $handle.offset().left;
+                x += ($handle.width() / 2) - 1;
+
+                this.pointerClick("single", {preventDefault: function () {}, pageX: x});
+            }
+        },
+
+        /**
+         * Mousemove or touchmove
+         * only for handlers
+         *
+         * @param e {Object} event object
+         */
+        pointerMove: function (e) {
+            if (!this.dragging) {
+                return;
+            }
+
+            var x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX;
+            this.coords.x_pointer = x - this.coords.x_gap;
+
+            this.calc();
+        },
+
+        /**
+         * Mouseup or touchend
+         * only for handlers
+         *
+         * @param e {Object} event object
+         */
+        pointerUp: function (e) {
+            if (this.current_plugin !== this.plugin_count) {
+                return;
+            }
+
+            if (this.is_active) {
+                this.is_active = false;
+            } else {
+                return;
+            }
+
+            this.$cache.cont.find(".state_hover").removeClass("state_hover");
+
+            this.force_redraw = true;
+
+            if (is_old_ie) {
+                $("*").prop("unselectable", false);
+            }
+
+            this.updateScene();
+            this.restoreOriginalMinInterval();
+
+            // callbacks call
+            if ($.contains(this.$cache.cont[0], e.target) || this.dragging) {
+                this.callOnFinish();
+            }
+
+            this.dragging = false;
+        },
+
+        /**
+         * Mousedown or touchstart
+         * only for handlers
+         *
+         * @param target {String|null}
+         * @param e {Object} event object
+         */
+        pointerDown: function (target, e) {
+            e.preventDefault();
+            var x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX;
+            if (e.button === 2) {
+                return;
+            }
+
+            if (target === "both") {
+                this.setTempMinInterval();
+            }
+
+            if (!target) {
+                target = this.target || "from";
+            }
+
+            this.current_plugin = this.plugin_count;
+            this.target = target;
+
+            this.is_active = true;
+            this.dragging = true;
+
+            this.coords.x_gap = this.$cache.rs.offset().left;
+            this.coords.x_pointer = x - this.coords.x_gap;
+
+            this.calcPointerPercent();
+            this.changeLevel(target);
+
+            if (is_old_ie) {
+                $("*").prop("unselectable", true);
+            }
+
+            this.$cache.line.trigger("focus");
+
+            this.updateScene();
+        },
+
+        /**
+         * Mousedown or touchstart
+         * for other slider elements, like diapason line
+         *
+         * @param target {String}
+         * @param e {Object} event object
+         */
+        pointerClick: function (target, e) {
+            e.preventDefault();
+            var x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX;
+            if (e.button === 2) {
+                return;
+            }
+
+            this.current_plugin = this.plugin_count;
+            this.target = target;
+
+            this.is_click = true;
+            this.coords.x_gap = this.$cache.rs.offset().left;
+            this.coords.x_pointer = +(x - this.coords.x_gap).toFixed();
+
+            this.force_redraw = true;
+            this.calc();
+
+            this.$cache.line.trigger("focus");
+        },
+
+        /**
+         * Keyborard controls for focused slider
+         *
+         * @param target {String}
+         * @param e {Object} event object
+         * @returns {boolean|undefined}
+         */
+        key: function (target, e) {
+            if (this.current_plugin !== this.plugin_count || e.altKey || e.ctrlKey || e.shiftKey || e.metaKey) {
+                return;
+            }
+
+            switch (e.which) {
+                case 83: // W
+                case 65: // A
+                case 40: // DOWN
+                case 37: // LEFT
+                    e.preventDefault();
+                    this.moveByKey(false);
+                    break;
+
+                case 87: // S
+                case 68: // D
+                case 38: // UP
+                case 39: // RIGHT
+                    e.preventDefault();
+                    this.moveByKey(true);
+                    break;
+            }
+
+            return true;
+        },
+
+        /**
+         * Move by key
+         *
+         * @param right {boolean} direction to move
+         */
+        moveByKey: function (right) {
+            var p = this.coords.p_pointer;
+            var p_step = (this.options.max - this.options.min) / 100;
+            p_step = this.options.step / p_step;
+
+            if (right) {
+                p += p_step;
+            } else {
+                p -= p_step;
+            }
+
+            this.coords.x_pointer = this.toFixed(this.coords.w_rs / 100 * p);
+            this.is_key = true;
+            this.calc();
+        },
+
+        /**
+         * Set visibility and content
+         * of Min and Max labels
+         */
+        setMinMax: function () {
+            if (!this.options) {
+                return;
+            }
+
+            if (this.options.hide_min_max) {
+                this.$cache.min[0].style.display = "none";
+                this.$cache.max[0].style.display = "none";
+                return;
+            }
+
+            if (this.options.values.length) {
+                this.$cache.min.html(this.decorate(this.options.p_values[this.options.min]));
+                this.$cache.max.html(this.decorate(this.options.p_values[this.options.max]));
+            } else {
+                var min_pretty = this._prettify(this.options.min);
+                var max_pretty = this._prettify(this.options.max);
+
+                this.result.min_pretty = min_pretty;
+                this.result.max_pretty = max_pretty;
+
+                this.$cache.min.html(this.decorate(min_pretty, this.options.min));
+                this.$cache.max.html(this.decorate(max_pretty, this.options.max));
+            }
+
+            this.labels.w_min = this.$cache.min.outerWidth(false);
+            this.labels.w_max = this.$cache.max.outerWidth(false);
+        },
+
+        /**
+         * Then dragging interval, prevent interval collapsing
+         * using min_interval option
+         */
+        setTempMinInterval: function () {
+            var interval = this.result.to - this.result.from;
+
+            if (this.old_min_interval === null) {
+                this.old_min_interval = this.options.min_interval;
+            }
+
+            this.options.min_interval = interval;
+        },
+
+        /**
+         * Restore min_interval option to original
+         */
+        restoreOriginalMinInterval: function () {
+            if (this.old_min_interval !== null) {
+                this.options.min_interval = this.old_min_interval;
+                this.old_min_interval = null;
+            }
+        },
+
+
+
+        // =============================================================================================================
+        // Calculations
+
+        /**
+         * All calculations and measures start here
+         *
+         * @param update {boolean=}
+         */
+        calc: function (update) {
+            if (!this.options) {
+                return;
+            }
+
+            this.calc_count++;
+
+            if (this.calc_count === 10 || update) {
+                this.calc_count = 0;
+                this.coords.w_rs = this.$cache.rs.outerWidth(false);
+
+                this.calcHandlePercent();
+            }
+
+            if (!this.coords.w_rs) {
+                return;
+            }
+
+            this.calcPointerPercent();
+            var handle_x = this.getHandleX();
+
+
+            if (this.target === "both") {
+                this.coords.p_gap = 0;
+                handle_x = this.getHandleX();
+            }
+
+            if (this.target === "click") {
+                this.coords.p_gap = this.coords.p_handle / 2;
+                handle_x = this.getHandleX();
+
+                if (this.options.drag_interval) {
+                    this.target = "both_one";
+                } else {
+                    this.target = this.chooseHandle(handle_x);
+                }
+            }
+
+            switch (this.target) {
+                case "base":
+                    var w = (this.options.max - this.options.min) / 100,
+                        f = (this.result.from - this.options.min) / w,
+                        t = (this.result.to - this.options.min) / w;
+
+                    this.coords.p_single_real = this.toFixed(f);
+                    this.coords.p_from_real = this.toFixed(f);
+                    this.coords.p_to_real = this.toFixed(t);
+
+                    this.coords.p_single_real = this.checkDiapason(this.coords.p_single_real, this.options.from_min, this.options.from_max);
+                    this.coords.p_from_real = this.checkDiapason(this.coords.p_from_real, this.options.from_min, this.options.from_max);
+                    this.coords.p_to_real = this.checkDiapason(this.coords.p_to_real, this.options.to_min, this.options.to_max);
+
+                    this.coords.p_single_fake = this.convertToFakePercent(this.coords.p_single_real);
+                    this.coords.p_from_fake = this.convertToFakePercent(this.coords.p_from_real);
+                    this.coords.p_to_fake = this.convertToFakePercent(this.coords.p_to_real);
+
+                    this.target = null;
+
+                    break;
+
+                case "single":
+                    if (this.options.from_fixed) {
+                        break;
+                    }
+
+                    this.coords.p_single_real = this.convertToRealPercent(handle_x);
+                    this.coords.p_single_real = this.calcWithStep(this.coords.p_single_real);
+                    this.coords.p_single_real = this.checkDiapason(this.coords.p_single_real, this.options.from_min, this.options.from_max);
+
+                    this.coords.p_single_fake = this.convertToFakePercent(this.coords.p_single_real);
+
+                    break;
+
+                case "from":
+                    if (this.options.from_fixed) {
+                        break;
+                    }
+
+                    this.coords.p_from_real = this.convertToRealPercent(handle_x);
+                    this.coords.p_from_real = this.calcWithStep(this.coords.p_from_real);
+                    if (this.coords.p_from_real > this.coords.p_to_real) {
+                        this.coords.p_from_real = this.coords.p_to_real;
+                    }
+                    this.coords.p_from_real = this.checkDiapason(this.coords.p_from_real, this.options.from_min, this.options.from_max);
+                    this.coords.p_from_real = this.checkMinInterval(this.coords.p_from_real, this.coords.p_to_real, "from");
+                    this.coords.p_from_real = this.checkMaxInterval(this.coords.p_from_real, this.coords.p_to_real, "from");
+
+                    this.coords.p_from_fake = this.convertToFakePercent(this.coords.p_from_real);
+
+                    break;
+
+                case "to":
+                    if (this.options.to_fixed) {
+                        break;
+                    }
+
+                    this.coords.p_to_real = this.convertToRealPercent(handle_x);
+                    this.coords.p_to_real = this.calcWithStep(this.coords.p_to_real);
+                    if (this.coords.p_to_real < this.coords.p_from_real) {
+                        this.coords.p_to_real = this.coords.p_from_real;
+                    }
+                    this.coords.p_to_real = this.checkDiapason(this.coords.p_to_real, this.options.to_min, this.options.to_max);
+                    this.coords.p_to_real = this.checkMinInterval(this.coords.p_to_real, this.coords.p_from_real, "to");
+                    this.coords.p_to_real = this.checkMaxInterval(this.coords.p_to_real, this.coords.p_from_real, "to");
+
+                    this.coords.p_to_fake = this.convertToFakePercent(this.coords.p_to_real);
+
+                    break;
+
+                case "both":
+                    if (this.options.from_fixed || this.options.to_fixed) {
+                        break;
+                    }
+
+                    handle_x = this.toFixed(handle_x + (this.coords.p_handle * 0.001));
+
+                    this.coords.p_from_real = this.convertToRealPercent(handle_x) - this.coords.p_gap_left;
+                    this.coords.p_from_real = this.calcWithStep(this.coords.p_from_real);
+                    this.coords.p_from_real = this.checkDiapason(this.coords.p_from_real, this.options.from_min, this.options.from_max);
+                    this.coords.p_from_real = this.checkMinInterval(this.coords.p_from_real, this.coords.p_to_real, "from");
+                    this.coords.p_from_fake = this.convertToFakePercent(this.coords.p_from_real);
+
+                    this.coords.p_to_real = this.convertToRealPercent(handle_x) + this.coords.p_gap_right;
+                    this.coords.p_to_real = this.calcWithStep(this.coords.p_to_real);
+                    this.coords.p_to_real = this.checkDiapason(this.coords.p_to_real, this.options.to_min, this.options.to_max);
+                    this.coords.p_to_real = this.checkMinInterval(this.coords.p_to_real, this.coords.p_from_real, "to");
+                    this.coords.p_to_fake = this.convertToFakePercent(this.coords.p_to_real);
+
+                    break;
+
+                case "both_one":
+                    if (this.options.from_fixed || this.options.to_fixed) {
+                        break;
+                    }
+
+                    var real_x = this.convertToRealPercent(handle_x),
+                        from = this.result.from_percent,
+                        to = this.result.to_percent,
+                        full = to - from,
+                        half = full / 2,
+                        new_from = real_x - half,
+                        new_to = real_x + half;
+
+                    if (new_from < 0) {
+                        new_from = 0;
+                        new_to = new_from + full;
+                    }
+
+                    if (new_to > 100) {
+                        new_to = 100;
+                        new_from = new_to - full;
+                    }
+
+                    this.coords.p_from_real = this.calcWithStep(new_from);
+                    this.coords.p_from_real = this.checkDiapason(this.coords.p_from_real, this.options.from_min, this.options.from_max);
+                    this.coords.p_from_fake = this.convertToFakePercent(this.coords.p_from_real);
+
+                    this.coords.p_to_real = this.calcWithStep(new_to);
+                    this.coords.p_to_real = this.checkDiapason(this.coords.p_to_real, this.options.to_min, this.options.to_max);
+                    this.coords.p_to_fake = this.convertToFakePercent(this.coords.p_to_real);
+
+                    break;
+            }
+
+            if (this.options.type === "single") {
+                this.coords.p_bar_x = (this.coords.p_handle / 2);
+                this.coords.p_bar_w = this.coords.p_single_fake;
+
+                this.result.from_percent = this.coords.p_single_real;
+                this.result.from = this.convertToValue(this.coords.p_single_real);
+                this.result.from_pretty = this._prettify(this.result.from);
+
+                if (this.options.values.length) {
+                    this.result.from_value = this.options.values[this.result.from];
+                }
+            } else {
+                this.coords.p_bar_x = this.toFixed(this.coords.p_from_fake + (this.coords.p_handle / 2));
+                this.coords.p_bar_w = this.toFixed(this.coords.p_to_fake - this.coords.p_from_fake);
+
+                this.result.from_percent = this.coords.p_from_real;
+                this.result.from = this.convertToValue(this.coords.p_from_real);
+                this.result.from_pretty = this._prettify(this.result.from);
+                this.result.to_percent = this.coords.p_to_real;
+                this.result.to = this.convertToValue(this.coords.p_to_real);
+                this.result.to_pretty = this._prettify(this.result.to);
+
+                if (this.options.values.length) {
+                    this.result.from_value = this.options.values[this.result.from];
+                    this.result.to_value = this.options.values[this.result.to];
+                }
+            }
+
+            this.calcMinMax();
+            this.calcLabels();
+        },
+
+
+        /**
+         * calculates pointer X in percent
+         */
+        calcPointerPercent: function () {
+            if (!this.coords.w_rs) {
+                this.coords.p_pointer = 0;
+                return;
+            }
+
+            if (this.coords.x_pointer < 0 || isNaN(this.coords.x_pointer)  ) {
+                this.coords.x_pointer = 0;
+            } else if (this.coords.x_pointer > this.coords.w_rs) {
+                this.coords.x_pointer = this.coords.w_rs;
+            }
+
+            this.coords.p_pointer = this.toFixed(this.coords.x_pointer / this.coords.w_rs * 100);
+        },
+
+        convertToRealPercent: function (fake) {
+            var full = 100 - this.coords.p_handle;
+            return fake / full * 100;
+        },
+
+        convertToFakePercent: function (real) {
+            var full = 100 - this.coords.p_handle;
+            return real / 100 * full;
+        },
+
+        getHandleX: function () {
+            var max = 100 - this.coords.p_handle,
+                x = this.toFixed(this.coords.p_pointer - this.coords.p_gap);
+
+            if (x < 0) {
+                x = 0;
+            } else if (x > max) {
+                x = max;
+            }
+
+            return x;
+        },
+
+        calcHandlePercent: function () {
+            if (this.options.type === "single") {
+                this.coords.w_handle = this.$cache.s_single.outerWidth(false);
+            } else {
+                this.coords.w_handle = this.$cache.s_from.outerWidth(false);
+            }
+
+            this.coords.p_handle = this.toFixed(this.coords.w_handle / this.coords.w_rs * 100);
+        },
+
+        /**
+         * Find closest handle to pointer click
+         *
+         * @param real_x {Number}
+         * @returns {String}
+         */
+        chooseHandle: function (real_x) {
+            if (this.options.type === "single") {
+                return "single";
+            } else {
+                var m_point = this.coords.p_from_real + ((this.coords.p_to_real - this.coords.p_from_real) / 2);
+                if (real_x >= m_point) {
+                    return this.options.to_fixed ? "from" : "to";
+                } else {
+                    return this.options.from_fixed ? "to" : "from";
+                }
+            }
+        },
+
+        /**
+         * Measure Min and Max labels width in percent
+         */
+        calcMinMax: function () {
+            if (!this.coords.w_rs) {
+                return;
+            }
+
+            this.labels.p_min = this.labels.w_min / this.coords.w_rs * 100;
+            this.labels.p_max = this.labels.w_max / this.coords.w_rs * 100;
+        },
+
+        /**
+         * Measure labels width and X in percent
+         */
+        calcLabels: function () {
+            if (!this.coords.w_rs || this.options.hide_from_to) {
+                return;
+            }
+
+            if (this.options.type === "single") {
+
+                this.labels.w_single = this.$cache.single.outerWidth(false);
+                this.labels.p_single_fake = this.labels.w_single / this.coords.w_rs * 100;
+                this.labels.p_single_left = this.coords.p_single_fake + (this.coords.p_handle / 2) - (this.labels.p_single_fake / 2);
+                this.labels.p_single_left = this.checkEdges(this.labels.p_single_left, this.labels.p_single_fake);
+
+            } else {
+
+                this.labels.w_from = this.$cache.from.outerWidth(false);
+                this.labels.p_from_fake = this.labels.w_from / this.coords.w_rs * 100;
+                this.labels.p_from_left = this.coords.p_from_fake + (this.coords.p_handle / 2) - (this.labels.p_from_fake / 2);
+                this.labels.p_from_left = this.toFixed(this.labels.p_from_left);
+                this.labels.p_from_left = this.checkEdges(this.labels.p_from_left, this.labels.p_from_fake);
+
+                this.labels.w_to = this.$cache.to.outerWidth(false);
+                this.labels.p_to_fake = this.labels.w_to / this.coords.w_rs * 100;
+                this.labels.p_to_left = this.coords.p_to_fake + (this.coords.p_handle / 2) - (this.labels.p_to_fake / 2);
+                this.labels.p_to_left = this.toFixed(this.labels.p_to_left);
+                this.labels.p_to_left = this.checkEdges(this.labels.p_to_left, this.labels.p_to_fake);
+
+                this.labels.w_single = this.$cache.single.outerWidth(false);
+                this.labels.p_single_fake = this.labels.w_single / this.coords.w_rs * 100;
+                this.labels.p_single_left = ((this.labels.p_from_left + this.labels.p_to_left + this.labels.p_to_fake) / 2) - (this.labels.p_single_fake / 2);
+                this.labels.p_single_left = this.toFixed(this.labels.p_single_left);
+                this.labels.p_single_left = this.checkEdges(this.labels.p_single_left, this.labels.p_single_fake);
+
+            }
+        },
+
+
+
+        // =============================================================================================================
+        // Drawings
+
+        /**
+         * Main function called in request animation frame
+         * to update everything
+         */
+        updateScene: function () {
+            if (this.raf_id) {
+                cancelAnimationFrame(this.raf_id);
+                this.raf_id = null;
+            }
+
+            clearTimeout(this.update_tm);
+            this.update_tm = null;
+
+            if (!this.options) {
+                return;
+            }
+
+            this.drawHandles();
+
+            if (this.is_active) {
+                this.raf_id = requestAnimationFrame(this.updateScene.bind(this));
+            } else {
+                this.update_tm = setTimeout(this.updateScene.bind(this), 300);
+            }
+        },
+
+        /**
+         * Draw handles
+         */
+        drawHandles: function () {
+            this.coords.w_rs = this.$cache.rs.outerWidth(false);
+
+            if (!this.coords.w_rs) {
+                return;
+            }
+
+            if (this.coords.w_rs !== this.coords.w_rs_old) {
+                this.target = "base";
+                this.is_resize = true;
+            }
+
+            if (this.coords.w_rs !== this.coords.w_rs_old || this.force_redraw) {
+                this.setMinMax();
+                this.calc(true);
+                this.drawLabels();
+                if (this.options.grid) {
+                    this.calcGridMargin();
+                    this.calcGridLabels();
+                }
+                this.force_redraw = true;
+                this.coords.w_rs_old = this.coords.w_rs;
+                this.drawShadow();
+            }
+
+            if (!this.coords.w_rs) {
+                return;
+            }
+
+            if (!this.dragging && !this.force_redraw && !this.is_key) {
+                return;
+            }
+
+            if (this.old_from !== this.result.from || this.old_to !== this.result.to || this.force_redraw || this.is_key) {
+
+                this.drawLabels();
+
+                this.$cache.bar[0].style.left = this.coords.p_bar_x + "%";
+                this.$cache.bar[0].style.width = this.coords.p_bar_w + "%";
+
+                if (this.options.type === "single") {
+                    this.$cache.bar[0].style.left = 0;
+                    this.$cache.bar[0].style.width = this.coords.p_bar_w + this.coords.p_bar_x + "%";
+
+                    this.$cache.s_single[0].style.left = this.coords.p_single_fake + "%";
+
+                    this.$cache.single[0].style.left = this.labels.p_single_left + "%";
+                } else {
+                    this.$cache.s_from[0].style.left = this.coords.p_from_fake + "%";
+                    this.$cache.s_to[0].style.left = this.coords.p_to_fake + "%";
+
+                    if (this.old_from !== this.result.from || this.force_redraw) {
+                        this.$cache.from[0].style.left = this.labels.p_from_left + "%";
+                    }
+                    if (this.old_to !== this.result.to || this.force_redraw) {
+                        this.$cache.to[0].style.left = this.labels.p_to_left + "%";
+                    }
+
+                    this.$cache.single[0].style.left = this.labels.p_single_left + "%";
+                }
+
+                this.writeToInput();
+
+                if ((this.old_from !== this.result.from || this.old_to !== this.result.to) && !this.is_start) {
+                    this.$cache.input.trigger("change");
+                    this.$cache.input.trigger("input");
+                }
+
+                this.old_from = this.result.from;
+                this.old_to = this.result.to;
+
+                // callbacks call
+                if (!this.is_resize && !this.is_update && !this.is_start && !this.is_finish) {
+                    this.callOnChange();
+                }
+                if (this.is_key || this.is_click) {
+                    this.is_key = false;
+                    this.is_click = false;
+                    this.callOnFinish();
+                }
+
+                this.is_update = false;
+                this.is_resize = false;
+                this.is_finish = false;
+            }
+
+            this.is_start = false;
+            this.is_key = false;
+            this.is_click = false;
+            this.force_redraw = false;
+        },
+
+        /**
+         * Draw labels
+         * measure labels collisions
+         * collapse close labels
+         */
+        drawLabels: function () {
+            if (!this.options) {
+                return;
+            }
+
+            var values_num = this.options.values.length;
+            var p_values = this.options.p_values;
+            var text_single;
+            var text_from;
+            var text_to;
+            var from_pretty;
+            var to_pretty;
+
+            if (this.options.hide_from_to) {
+                return;
+            }
+
+            if (this.options.type === "single") {
+
+                if (values_num) {
+                    text_single = this.decorate(p_values[this.result.from]);
+                    this.$cache.single.html(text_single);
+                } else {
+                    from_pretty = this._prettify(this.result.from);
+
+                    text_single = this.decorate(from_pretty, this.result.from);
+                    this.$cache.single.html(text_single);
+                }
+
+                this.calcLabels();
+
+                if (this.labels.p_single_left < this.labels.p_min + 1) {
+                    this.$cache.min[0].style.visibility = "hidden";
+                } else {
+                    this.$cache.min[0].style.visibility = "visible";
+                }
+
+                if (this.labels.p_single_left + this.labels.p_single_fake > 100 - this.labels.p_max - 1) {
+                    this.$cache.max[0].style.visibility = "hidden";
+                } else {
+                    this.$cache.max[0].style.visibility = "visible";
+                }
+
+            } else {
+
+                if (values_num) {
+
+                    if (this.options.decorate_both) {
+                        text_single = this.decorate(p_values[this.result.from]);
+                        text_single += this.options.values_separator;
+                        text_single += this.decorate(p_values[this.result.to]);
+                    } else {
+                        text_single = this.decorate(p_values[this.result.from] + this.options.values_separator + p_values[this.result.to]);
+                    }
+                    text_from = this.decorate(p_values[this.result.from]);
+                    text_to = this.decorate(p_values[this.result.to]);
+
+                    this.$cache.single.html(text_single);
+                    this.$cache.from.html(text_from);
+                    this.$cache.to.html(text_to);
+
+                } else {
+                    from_pretty = this._prettify(this.result.from);
+                    to_pretty = this._prettify(this.result.to);
+
+                    if (this.options.decorate_both) {
+                        text_single = this.decorate(from_pretty, this.result.from);
+                        text_single += this.options.values_separator;
+                        text_single += this.decorate(to_pretty, this.result.to);
+                    } else {
+                        text_single = this.decorate(from_pretty + this.options.values_separator + to_pretty, this.result.to);
+                    }
+                    text_from = this.decorate(from_pretty, this.result.from);
+                    text_to = this.decorate(to_pretty, this.result.to);
+
+                    this.$cache.single.html(text_single);
+                    this.$cache.from.html(text_from);
+                    this.$cache.to.html(text_to);
+
+                }
+
+                this.calcLabels();
+
+                var min = Math.min(this.labels.p_single_left, this.labels.p_from_left),
+                    single_left = this.labels.p_single_left + this.labels.p_single_fake,
+                    to_left = this.labels.p_to_left + this.labels.p_to_fake,
+                    max = Math.max(single_left, to_left);
+
+                if (this.labels.p_from_left + this.labels.p_from_fake >= this.labels.p_to_left) {
+                    this.$cache.from[0].style.visibility = "hidden";
+                    this.$cache.to[0].style.visibility = "hidden";
+                    this.$cache.single[0].style.visibility = "visible";
+
+                    if (this.result.from === this.result.to) {
+                        if (this.target === "from") {
+                            this.$cache.from[0].style.visibility = "visible";
+                        } else if (this.target === "to") {
+                            this.$cache.to[0].style.visibility = "visible";
+                        } else if (!this.target) {
+                            this.$cache.from[0].style.visibility = "visible";
+                        }
+                        this.$cache.single[0].style.visibility = "hidden";
+                        max = to_left;
+                    } else {
+                        this.$cache.from[0].style.visibility = "hidden";
+                        this.$cache.to[0].style.visibility = "hidden";
+                        this.$cache.single[0].style.visibility = "visible";
+                        max = Math.max(single_left, to_left);
+                    }
+                } else {
+                    this.$cache.from[0].style.visibility = "visible";
+                    this.$cache.to[0].style.visibility = "visible";
+                    this.$cache.single[0].style.visibility = "hidden";
+                }
+
+                if (min < this.labels.p_min + 1) {
+                    this.$cache.min[0].style.visibility = "hidden";
+                } else {
+                    this.$cache.min[0].style.visibility = "visible";
+                }
+
+                if (max > 100 - this.labels.p_max - 1) {
+                    this.$cache.max[0].style.visibility = "hidden";
+                } else {
+                    this.$cache.max[0].style.visibility = "visible";
+                }
+
+            }
+        },
+
+        /**
+         * Draw shadow intervals
+         */
+        drawShadow: function () {
+            var o = this.options,
+                c = this.$cache,
+
+                is_from_min = typeof o.from_min === "number" && !isNaN(o.from_min),
+                is_from_max = typeof o.from_max === "number" && !isNaN(o.from_max),
+                is_to_min = typeof o.to_min === "number" && !isNaN(o.to_min),
+                is_to_max = typeof o.to_max === "number" && !isNaN(o.to_max),
+
+                from_min,
+                from_max,
+                to_min,
+                to_max;
+
+            if (o.type === "single") {
+                if (o.from_shadow && (is_from_min || is_from_max)) {
+                    from_min = this.convertToPercent(is_from_min ? o.from_min : o.min);
+                    from_max = this.convertToPercent(is_from_max ? o.from_max : o.max) - from_min;
+                    from_min = this.toFixed(from_min - (this.coords.p_handle / 100 * from_min));
+                    from_max = this.toFixed(from_max - (this.coords.p_handle / 100 * from_max));
+                    from_min = from_min + (this.coords.p_handle / 2);
+
+                    c.shad_single[0].style.display = "block";
+                    c.shad_single[0].style.left = from_min + "%";
+                    c.shad_single[0].style.width = from_max + "%";
+                } else {
+                    c.shad_single[0].style.display = "none";
+                }
+            } else {
+                if (o.from_shadow && (is_from_min || is_from_max)) {
+                    from_min = this.convertToPercent(is_from_min ? o.from_min : o.min);
+                    from_max = this.convertToPercent(is_from_max ? o.from_max : o.max) - from_min;
+                    from_min = this.toFixed(from_min - (this.coords.p_handle / 100 * from_min));
+                    from_max = this.toFixed(from_max - (this.coords.p_handle / 100 * from_max));
+                    from_min = from_min + (this.coords.p_handle / 2);
+
+                    c.shad_from[0].style.display = "block";
+                    c.shad_from[0].style.left = from_min + "%";
+                    c.shad_from[0].style.width = from_max + "%";
+                } else {
+                    c.shad_from[0].style.display = "none";
+                }
+
+                if (o.to_shadow && (is_to_min || is_to_max)) {
+                    to_min = this.convertToPercent(is_to_min ? o.to_min : o.min);
+                    to_max = this.convertToPercent(is_to_max ? o.to_max : o.max) - to_min;
+                    to_min = this.toFixed(to_min - (this.coords.p_handle / 100 * to_min));
+                    to_max = this.toFixed(to_max - (this.coords.p_handle / 100 * to_max));
+                    to_min = to_min + (this.coords.p_handle / 2);
+
+                    c.shad_to[0].style.display = "block";
+                    c.shad_to[0].style.left = to_min + "%";
+                    c.shad_to[0].style.width = to_max + "%";
+                } else {
+                    c.shad_to[0].style.display = "none";
+                }
+            }
+        },
+
+
+
+        /**
+         * Write values to input element
+         */
+        writeToInput: function () {
+            if (this.options.type === "single") {
+                if (this.options.values.length) {
+                    this.$cache.input.prop("value", this.result.from_value);
+                } else {
+                    this.$cache.input.prop("value", this.result.from);
+                }
+                this.$cache.input.data("from", this.result.from);
+            } else {
+                if (this.options.values.length) {
+                    this.$cache.input.prop("value", this.result.from_value + this.options.input_values_separator + this.result.to_value);
+                } else {
+                    this.$cache.input.prop("value", this.result.from + this.options.input_values_separator + this.result.to);
+                }
+                this.$cache.input.data("from", this.result.from);
+                this.$cache.input.data("to", this.result.to);
+            }
+        },
+
+
+
+        // =============================================================================================================
+        // Callbacks
+
+        callOnStart: function () {
+            this.writeToInput();
+
+            if (this.options.onStart && typeof this.options.onStart === "function") {
+                if (this.options.scope) {
+                    this.options.onStart.call(this.options.scope, this.result);
+                } else {
+                    this.options.onStart(this.result);
+                }
+            }
+        },
+        callOnChange: function () {
+            this.writeToInput();
+
+            if (this.options.onChange && typeof this.options.onChange === "function") {
+                if (this.options.scope) {
+                    this.options.onChange.call(this.options.scope, this.result);
+                } else {
+                    this.options.onChange(this.result);
+                }
+            }
+        },
+        callOnFinish: function () {
+            this.writeToInput();
+
+            if (this.options.onFinish && typeof this.options.onFinish === "function") {
+                if (this.options.scope) {
+                    this.options.onFinish.call(this.options.scope, this.result);
+                } else {
+                    this.options.onFinish(this.result);
+                }
+            }
+        },
+        callOnUpdate: function () {
+            this.writeToInput();
+
+            if (this.options.onUpdate && typeof this.options.onUpdate === "function") {
+                if (this.options.scope) {
+                    this.options.onUpdate.call(this.options.scope, this.result);
+                } else {
+                    this.options.onUpdate(this.result);
+                }
+            }
+        },
+
+
+
+
+        // =============================================================================================================
+        // Service methods
+
+        toggleInput: function () {
+            this.$cache.input.toggleClass("irs-hidden-input");
+
+            if (this.has_tab_index) {
+                this.$cache.input.prop("tabindex", -1);
+            } else {
+                this.$cache.input.removeProp("tabindex");
+            }
+
+            this.has_tab_index = !this.has_tab_index;
+        },
+
+        /**
+         * Convert real value to percent
+         *
+         * @param value {Number} X in real
+         * @param no_min {boolean=} don't use min value
+         * @returns {Number} X in percent
+         */
+        convertToPercent: function (value, no_min) {
+            var diapason = this.options.max - this.options.min,
+                one_percent = diapason / 100,
+                val, percent;
+
+            if (!diapason) {
+                this.no_diapason = true;
+                return 0;
+            }
+
+            if (no_min) {
+                val = value;
+            } else {
+                val = value - this.options.min;
+            }
+
+            percent = val / one_percent;
+
+            return this.toFixed(percent);
+        },
+
+        /**
+         * Convert percent to real values
+         *
+         * @param percent {Number} X in percent
+         * @returns {Number} X in real
+         */
+        convertToValue: function (percent) {
+            var min = this.options.min,
+                max = this.options.max,
+                min_decimals = min.toString().split(".")[1],
+                max_decimals = max.toString().split(".")[1],
+                min_length, max_length,
+                avg_decimals = 0,
+                abs = 0;
+
+            if (percent === 0) {
+                return this.options.min;
+            }
+            if (percent === 100) {
+                return this.options.max;
+            }
+
+
+            if (min_decimals) {
+                min_length = min_decimals.length;
+                avg_decimals = min_length;
+            }
+            if (max_decimals) {
+                max_length = max_decimals.length;
+                avg_decimals = max_length;
+            }
+            if (min_length && max_length) {
+                avg_decimals = (min_length >= max_length) ? min_length : max_length;
+            }
+
+            if (min < 0) {
+                abs = Math.abs(min);
+                min = +(min + abs).toFixed(avg_decimals);
+                max = +(max + abs).toFixed(avg_decimals);
+            }
+
+            var number = ((max - min) / 100 * percent) + min,
+                string = this.options.step.toString().split(".")[1],
+                result;
+
+            if (string) {
+                number = +number.toFixed(string.length);
+            } else {
+                number = number / this.options.step;
+                number = number * this.options.step;
+
+                number = +number.toFixed(0);
+            }
+
+            if (abs) {
+                number -= abs;
+            }
+
+            if (string) {
+                result = +number.toFixed(string.length);
+            } else {
+                result = this.toFixed(number);
+            }
+
+            if (result < this.options.min) {
+                result = this.options.min;
+            } else if (result > this.options.max) {
+                result = this.options.max;
+            }
+
+            return result;
+        },
+
+        /**
+         * Round percent value with step
+         *
+         * @param percent {Number}
+         * @returns percent {Number} rounded
+         */
+        calcWithStep: function (percent) {
+            var rounded = Math.round(percent / this.coords.p_step) * this.coords.p_step;
+
+            if (rounded > 100) {
+                rounded = 100;
+            }
+            if (percent === 100) {
+                rounded = 100;
+            }
+
+            return this.toFixed(rounded);
+        },
+
+        checkMinInterval: function (p_current, p_next, type) {
+            var o = this.options,
+                current,
+                next;
+
+            if (!o.min_interval) {
+                return p_current;
+            }
+
+            current = this.convertToValue(p_current);
+            next = this.convertToValue(p_next);
+
+            if (type === "from") {
+
+                if (next - current < o.min_interval) {
+                    current = next - o.min_interval;
+                }
+
+            } else {
+
+                if (current - next < o.min_interval) {
+                    current = next + o.min_interval;
+                }
+
+            }
+
+            return this.convertToPercent(current);
+        },
+
+        checkMaxInterval: function (p_current, p_next, type) {
+            var o = this.options,
+                current,
+                next;
+
+            if (!o.max_interval) {
+                return p_current;
+            }
+
+            current = this.convertToValue(p_current);
+            next = this.convertToValue(p_next);
+
+            if (type === "from") {
+
+                if (next - current > o.max_interval) {
+                    current = next - o.max_interval;
+                }
+
+            } else {
+
+                if (current - next > o.max_interval) {
+                    current = next + o.max_interval;
+                }
+
+            }
+
+            return this.convertToPercent(current);
+        },
+
+        checkDiapason: function (p_num, min, max) {
+            var num = this.convertToValue(p_num),
+                o = this.options;
+
+            if (typeof min !== "number") {
+                min = o.min;
+            }
+
+            if (typeof max !== "number") {
+                max = o.max;
+            }
+
+            if (num < min) {
+                num = min;
+            }
+
+            if (num > max) {
+                num = max;
+            }
+
+            return this.convertToPercent(num);
+        },
+
+        toFixed: function (num) {
+            num = num.toFixed(20);
+            return +num;
+        },
+
+        _prettify: function (num) {
+            if (!this.options.prettify_enabled) {
+                return num;
+            }
+
+            if (this.options.prettify && typeof this.options.prettify === "function") {
+                return this.options.prettify(num);
+            } else {
+                return this.prettify(num);
+            }
+        },
+
+        prettify: function (num) {
+            var n = num.toString();
+            return n.replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + this.options.prettify_separator);
+        },
+
+        checkEdges: function (left, width) {
+            if (!this.options.force_edges) {
+                return this.toFixed(left);
+            }
+
+            if (left < 0) {
+                left = 0;
+            } else if (left > 100 - width) {
+                left = 100 - width;
+            }
+
+            return this.toFixed(left);
+        },
+
+        validate: function () {
+            var o = this.options,
+                r = this.result,
+                v = o.values,
+                vl = v.length,
+                value,
+                i;
+
+            if (typeof o.min === "string") o.min = +o.min;
+            if (typeof o.max === "string") o.max = +o.max;
+            if (typeof o.from === "string") o.from = +o.from;
+            if (typeof o.to === "string") o.to = +o.to;
+            if (typeof o.step === "string") o.step = +o.step;
+
+            if (typeof o.from_min === "string") o.from_min = +o.from_min;
+            if (typeof o.from_max === "string") o.from_max = +o.from_max;
+            if (typeof o.to_min === "string") o.to_min = +o.to_min;
+            if (typeof o.to_max === "string") o.to_max = +o.to_max;
+
+            if (typeof o.grid_num === "string") o.grid_num = +o.grid_num;
+
+            if (o.max < o.min) {
+                o.max = o.min;
+            }
+
+            if (vl) {
+                o.p_values = [];
+                o.min = 0;
+                o.max = vl - 1;
+                o.step = 1;
+                o.grid_num = o.max;
+                o.grid_snap = true;
+
+                for (i = 0; i < vl; i++) {
+                    value = +v[i];
+
+                    if (!isNaN(value)) {
+                        v[i] = value;
+                        value = this._prettify(value);
+                    } else {
+                        value = v[i];
+                    }
+
+                    o.p_values.push(value);
+                }
+            }
+
+            if (typeof o.from !== "number" || isNaN(o.from)) {
+                o.from = o.min;
+            }
+
+            if (typeof o.to !== "number" || isNaN(o.to)) {
+                o.to = o.max;
+            }
+
+            if (o.type === "single") {
+
+                if (o.from < o.min) o.from = o.min;
+                if (o.from > o.max) o.from = o.max;
+
+            } else {
+
+                if (o.from < o.min) o.from = o.min;
+                if (o.from > o.max) o.from = o.max;
+
+                if (o.to < o.min) o.to = o.min;
+                if (o.to > o.max) o.to = o.max;
+
+                if (this.update_check.from) {
+
+                    if (this.update_check.from !== o.from) {
+                        if (o.from > o.to) o.from = o.to;
+                    }
+                    if (this.update_check.to !== o.to) {
+                        if (o.to < o.from) o.to = o.from;
+                    }
+
+                }
+
+                if (o.from > o.to) o.from = o.to;
+                if (o.to < o.from) o.to = o.from;
+
+            }
+
+            if (typeof o.step !== "number" || isNaN(o.step) || !o.step || o.step < 0) {
+                o.step = 1;
+            }
+
+            if (typeof o.from_min === "number" && o.from < o.from_min) {
+                o.from = o.from_min;
+            }
+
+            if (typeof o.from_max === "number" && o.from > o.from_max) {
+                o.from = o.from_max;
+            }
+
+            if (typeof o.to_min === "number" && o.to < o.to_min) {
+                o.to = o.to_min;
+            }
+
+            if (typeof o.to_max === "number" && o.from > o.to_max) {
+                o.to = o.to_max;
+            }
+
+            if (r) {
+                if (r.min !== o.min) {
+                    r.min = o.min;
+                }
+
+                if (r.max !== o.max) {
+                    r.max = o.max;
+                }
+
+                if (r.from < r.min || r.from > r.max) {
+                    r.from = o.from;
+                }
+
+                if (r.to < r.min || r.to > r.max) {
+                    r.to = o.to;
+                }
+            }
+
+            if (typeof o.min_interval !== "number" || isNaN(o.min_interval) || !o.min_interval || o.min_interval < 0) {
+                o.min_interval = 0;
+            }
+
+            if (typeof o.max_interval !== "number" || isNaN(o.max_interval) || !o.max_interval || o.max_interval < 0) {
+                o.max_interval = 0;
+            }
+
+            if (o.min_interval && o.min_interval > o.max - o.min) {
+                o.min_interval = o.max - o.min;
+            }
+
+            if (o.max_interval && o.max_interval > o.max - o.min) {
+                o.max_interval = o.max - o.min;
+            }
+        },
+
+        decorate: function (num, original) {
+            var decorated = "",
+                o = this.options;
+
+            if (o.prefix) {
+                decorated += o.prefix;
+            }
+
+            decorated += num;
+
+            if (o.max_postfix) {
+                if (o.values.length && num === o.p_values[o.max]) {
+                    decorated += o.max_postfix;
+                    if (o.postfix) {
+                        decorated += " ";
+                    }
+                } else if (original === o.max) {
+                    decorated += o.max_postfix;
+                    if (o.postfix) {
+                        decorated += " ";
+                    }
+                }
+            }
+
+            if (o.postfix) {
+                decorated += o.postfix;
+            }
+
+            return decorated;
+        },
+
+        updateFrom: function () {
+            this.result.from = this.options.from;
+            this.result.from_percent = this.convertToPercent(this.result.from);
+            this.result.from_pretty = this._prettify(this.result.from);
+            if (this.options.values) {
+                this.result.from_value = this.options.values[this.result.from];
+            }
+        },
+
+        updateTo: function () {
+            this.result.to = this.options.to;
+            this.result.to_percent = this.convertToPercent(this.result.to);
+            this.result.to_pretty = this._prettify(this.result.to);
+            if (this.options.values) {
+                this.result.to_value = this.options.values[this.result.to];
+            }
+        },
+
+        updateResult: function () {
+            this.result.min = this.options.min;
+            this.result.max = this.options.max;
+            this.updateFrom();
+            this.updateTo();
+        },
+
+
+        // =============================================================================================================
+        // Grid
+
+        appendGrid: function () {
+            if (!this.options.grid) {
+                return;
+            }
+
+            var o = this.options,
+                i, z,
+
+                total = o.max - o.min,
+                big_num = o.grid_num,
+                big_p = 0,
+                big_w = 0,
+
+                small_max = 4,
+                local_small_max,
+                small_p,
+                small_w = 0,
+
+                result,
+                html = '';
+
+
+
+            this.calcGridMargin();
+
+            if (o.grid_snap) {
+                big_num = total / o.step;
+            }
+
+            if (big_num > 50) big_num = 50;
+            big_p = this.toFixed(100 / big_num);
+
+            if (big_num > 4) {
+                small_max = 3;
+            }
+            if (big_num > 7) {
+                small_max = 2;
+            }
+            if (big_num > 14) {
+                small_max = 1;
+            }
+            if (big_num > 28) {
+                small_max = 0;
+            }
+
+            for (i = 0; i < big_num + 1; i++) {
+                local_small_max = small_max;
+
+                big_w = this.toFixed(big_p * i);
+
+                if (big_w > 100) {
+                    big_w = 100;
+                }
+                this.coords.big[i] = big_w;
+
+                small_p = (big_w - (big_p * (i - 1))) / (local_small_max + 1);
+
+                for (z = 1; z <= local_small_max; z++) {
+                    if (big_w === 0) {
+                        break;
+                    }
+
+                    small_w = this.toFixed(big_w - (small_p * z));
+
+                    html += '<span class="irs-grid-pol small" style="left: ' + small_w + '%"></span>';
+                }
+
+                html += '<span class="irs-grid-pol" style="left: ' + big_w + '%"></span>';
+
+                result = this.convertToValue(big_w);
+                if (o.values.length) {
+                    result = o.p_values[result];
+                } else {
+                    result = this._prettify(result);
+                }
+
+                html += '<span class="irs-grid-text js-grid-text-' + i + '" style="left: ' + big_w + '%">' + result + '</span>';
+            }
+            this.coords.big_num = Math.ceil(big_num + 1);
+
+
+
+            this.$cache.cont.addClass("irs-with-grid");
+            this.$cache.grid.html(html);
+            this.cacheGridLabels();
+        },
+
+        cacheGridLabels: function () {
+            var $label, i,
+                num = this.coords.big_num;
+
+            for (i = 0; i < num; i++) {
+                $label = this.$cache.grid.find(".js-grid-text-" + i);
+                this.$cache.grid_labels.push($label);
+            }
+
+            this.calcGridLabels();
+        },
+
+        calcGridLabels: function () {
+            var i, label, start = [], finish = [],
+                num = this.coords.big_num;
+
+            for (i = 0; i < num; i++) {
+                this.coords.big_w[i] = this.$cache.grid_labels[i].outerWidth(false);
+                this.coords.big_p[i] = this.toFixed(this.coords.big_w[i] / this.coords.w_rs * 100);
+                this.coords.big_x[i] = this.toFixed(this.coords.big_p[i] / 2);
+
+                start[i] = this.toFixed(this.coords.big[i] - this.coords.big_x[i]);
+                finish[i] = this.toFixed(start[i] + this.coords.big_p[i]);
+            }
+
+            if (this.options.force_edges) {
+                if (start[0] < -this.coords.grid_gap) {
+                    start[0] = -this.coords.grid_gap;
+                    finish[0] = this.toFixed(start[0] + this.coords.big_p[0]);
+
+                    this.coords.big_x[0] = this.coords.grid_gap;
+                }
+
+                if (finish[num - 1] > 100 + this.coords.grid_gap) {
+                    finish[num - 1] = 100 + this.coords.grid_gap;
+                    start[num - 1] = this.toFixed(finish[num - 1] - this.coords.big_p[num - 1]);
+
+                    this.coords.big_x[num - 1] = this.toFixed(this.coords.big_p[num - 1] - this.coords.grid_gap);
+                }
+            }
+
+            this.calcGridCollision(2, start, finish);
+            this.calcGridCollision(4, start, finish);
+
+            for (i = 0; i < num; i++) {
+                label = this.$cache.grid_labels[i][0];
+
+                if (this.coords.big_x[i] !== Number.POSITIVE_INFINITY) {
+                    label.style.marginLeft = -this.coords.big_x[i] + "%";
+                }
+            }
+        },
+
+        // Collisions Calc Beta
+        // TODO: Refactor then have plenty of time
+        calcGridCollision: function (step, start, finish) {
+            var i, next_i, label,
+                num = this.coords.big_num;
+
+            for (i = 0; i < num; i += step) {
+                next_i = i + (step / 2);
+                if (next_i >= num) {
+                    break;
+                }
+
+                label = this.$cache.grid_labels[next_i][0];
+
+                if (finish[i] <= start[next_i]) {
+                    label.style.visibility = "visible";
+                } else {
+                    label.style.visibility = "hidden";
+                }
+            }
+        },
+
+        calcGridMargin: function () {
+            if (!this.options.grid_margin) {
+                return;
+            }
+
+            this.coords.w_rs = this.$cache.rs.outerWidth(false);
+            if (!this.coords.w_rs) {
+                return;
+            }
+
+            if (this.options.type === "single") {
+                this.coords.w_handle = this.$cache.s_single.outerWidth(false);
+            } else {
+                this.coords.w_handle = this.$cache.s_from.outerWidth(false);
+            }
+            this.coords.p_handle = this.toFixed(this.coords.w_handle  / this.coords.w_rs * 100);
+            this.coords.grid_gap = this.toFixed((this.coords.p_handle / 2) - 0.1);
+
+            this.$cache.grid[0].style.width = this.toFixed(100 - this.coords.p_handle) + "%";
+            this.$cache.grid[0].style.left = this.coords.grid_gap + "%";
+        },
+
+
+
+        // =============================================================================================================
+        // Public methods
+
+        update: function (options) {
+            if (!this.input) {
+                return;
+            }
+
+            this.is_update = true;
+
+            this.options.from = this.result.from;
+            this.options.to = this.result.to;
+            this.update_check.from = this.result.from;
+            this.update_check.to = this.result.to;
+
+            this.options = $.extend(this.options, options);
+            this.validate();
+            this.updateResult(options);
+
+            this.toggleInput();
+            this.remove();
+            this.init(true);
+        },
+
+        reset: function () {
+            if (!this.input) {
+                return;
+            }
+
+            this.updateResult();
+            this.update();
+        },
+
+        destroy: function () {
+            if (!this.input) {
+                return;
+            }
+
+            this.toggleInput();
+            this.$cache.input.prop("readonly", false);
+            $.data(this.input, "ionRangeSlider", null);
+
+            this.remove();
+            this.input = null;
+            this.options = null;
+        }
+    };
+
+    $.fn.ionRangeSlider = function (options) {
+        return this.each(function() {
+            if (!$.data(this, "ionRangeSlider")) {
+                $.data(this, "ionRangeSlider", new IonRangeSlider(this, options, plugin_count++));
+            }
+        });
+    };
+
+
+
+    // =================================================================================================================
+    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+    // http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+    // requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+
+    // MIT license
+
+    (function() {
+        var lastTime = 0;
+        var vendors = ['ms', 'moz', 'webkit', 'o'];
+        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+            window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+            window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                || window[vendors[x]+'CancelRequestAnimationFrame'];
+        }
+
+        if (!window.requestAnimationFrame)
+            window.requestAnimationFrame = function(callback, element) {
+                var currTime = new Date().getTime();
+                var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                    timeToCall);
+                lastTime = currTime + timeToCall;
+                return id;
+            };
+
+        if (!window.cancelAnimationFrame)
+            window.cancelAnimationFrame = function(id) {
+                clearTimeout(id);
+            };
+    }());
+
+}));
 
 
 /***/ }),
@@ -15165,6 +18770,19 @@ if ( typeof noGlobal === "undefined" ) {
 
 return jQuery;
 } );
+
+
+/***/ }),
+
+/***/ "./resources/assets/sass/app.scss":
+/*!****************************************!*\
+  !*** ./resources/assets/sass/app.scss ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
 
 
 /***/ }),
@@ -32604,7 +36222,46 @@ process.umask = function() { return 0; };
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/amd options */
+/******/ 	(() => {
+/******/ 		__webpack_require__.amdO = {};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					result = fn();
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -32617,6 +36274,22 @@ process.umask = function() { return 0; };
 /******/ 		})();
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -32626,3440 +36299,66 @@ process.umask = function() { return 0; };
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0,
+/******/ 			"css/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			for(moduleId in moreModules) {
+/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 				}
+/******/ 			}
+/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			__webpack_require__.O();
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
-/*!************************************!*\
-  !*** ./resources/assets/js/app.js ***!
-  \************************************/
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-__webpack_require__(/*! ./bootstrap */ "./resources/assets/js/bootstrap.js"); // window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-// const app = new Vue({
-//     el: '#app'
-// });
-//kotedzu planu slider
-
-
-$(document).ready(function () {
-  var index = 0;
-  var x = document.getElementsByClassName('skaidre');
-  document.getElementById("btnr").addEventListener("click", function () {
-    pindex(-1);
-  });
-  document.getElementById("btnn").addEventListener("click", function () {
-    pindex(+1);
-  });
-
-  function pindex(n) {
-    index = index + n;
-
-    if (index > x.length - 1) {
-      index = 0;
-    } else if (index < 0) {
-      index = x.length - 1;
-    }
-
-    ;
-    ShowTime(index);
-  }
-
-  ;
-
-  function ShowTime(index) {
-    var x = document.getElementsByClassName('skaidre');
-
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-
-    ;
-    x[index].style.display = "inline-block";
-  }
-
-  ;
-});
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
-var pirmolaisvi = 0;
-var pirmorezervuoti = 0;
-var pirmoparduoti = 0;
-var antrolaisvi = 0;
-var antrorezervuoti = 0;
-var antroparduoti = 0;
-var treciolaisvi = 0;
-var treciorezervuoti = 0;
-var trecioparduoti = 0;
-var ketvirtolaisvi = 0;
-var ketvirtorezervuoti = 0;
-var ketvirtoparduoti = 0;
-var kotedzolaisvi = 0;
-var kotedzorezervuoti = 0;
-var kotedzoparduoti = 0;
-
-window.onload = function () {
-  //pirmas namas
-  $.ajax({
-    url: '/pirmasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#pirmasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasa1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#pirmasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasa2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#pirmasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasa3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("pirmasa1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#pirmasa1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#pirmasa1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasa1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasa1").addEventListener("mouseout", function () {
-        document.getElementById("pirmasa1").style.fill = "transparent";
-      });
-      document.getElementById("pirmasa2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#pirmasa2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#pirmasa2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasa2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasa2").addEventListener("mouseout", function () {
-        document.getElementById("pirmasa2").style.fill = "transparent";
-      });
-      document.getElementById("pirmasa3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#pirmasa3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#pirmasa3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasa3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasa3").addEventListener("mouseout", function () {
-        document.getElementById("pirmasa3").style.fill = "transparent";
-      });
-    },
-    error: function (_error) {
-      function error() {
-        return _error.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/pirmasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          pirmolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          pirmoparduoti++;
-        } else {
-          rezervuota++;
-          pirmorezervuoti++;
-        }
-      }
-
-      var pirmo1alaisvu = document.getElementById('pirmo1alaisvu');
-
-      if (pirmo1alaisvu) {
-        pirmo1alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var pirmo1arezervuotu = document.getElementById('pirmo1arezervuotu');
-
-      if (pirmo1arezervuotu) {
-        pirmo1arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var pirmo1aparduotu = document.getElementById('pirmo1aparduotu');
-
-      if (pirmo1aparduotu) {
-        pirmo1aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var pirmox = document.getElementById('pirmolaisvi');
-
-      if (pirmox) {
-        pirmox.innerHTML = 'Laisvu: ' + pirmolaisvi;
-      }
-
-      var pirmoy = document.getElementById('pirmorezervuoti');
-
-      if (pirmoy) {
-        pirmoy.innerHTML = 'Rezervuotu: ' + pirmorezervuoti;
-      }
-
-      var pirmoz = document.getElementById('pirmoparduoti');
-
-      if (pirmoz) {
-        pirmoz.innerHTML = 'Parduotu: ' + pirmoparduoti;
-      }
-    },
-    error: function (_error2) {
-      function error() {
-        return _error2.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error2.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/pirmasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#pirmasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasb1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#pirmasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasb2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#pirmasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasb3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("pirmasb1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#pirmasb1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#pirmasb1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasb1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasb1").addEventListener("mouseout", function () {
-        document.getElementById("pirmasb1").style.fill = "transparent";
-      });
-      document.getElementById("pirmasb2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#pirmasb2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#pirmasb2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasb2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasb2").addEventListener("mouseout", function () {
-        document.getElementById("pirmasb2").style.fill = "transparent";
-      });
-      document.getElementById("pirmasb3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#pirmasb3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#pirmasb3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasb3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasb3").addEventListener("mouseout", function () {
-        document.getElementById("pirmasb3").style.fill = "transparent";
-      });
-    },
-    error: function (_error3) {
-      function error() {
-        return _error3.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error3.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/pirmasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          pirmolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          pirmoparduoti++;
-        } else {
-          rezervuota++;
-          pirmorezervuoti++;
-        }
-      }
-
-      var pirmo2alaisvu = document.getElementById('pirmo2alaisvu');
-
-      if (pirmo2alaisvu) {
-        pirmo2alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var pirmo2arezervuotu = document.getElementById('pirmo2arezervuotu');
-
-      if (pirmo2arezervuotu) {
-        pirmo2arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var pirmo2aparduotu = document.getElementById('pirmo2aparduotu');
-
-      if (pirmo2aparduotu) {
-        pirmo2aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var pirmox = document.getElementById('pirmolaisvi');
-
-      if (pirmox) {
-        pirmox.innerHTML = 'Laisvu: ' + pirmolaisvi;
-      }
-
-      var pirmoy = document.getElementById('pirmorezervuoti');
-
-      if (pirmoy) {
-        pirmoy.innerHTML = 'Rezervuotu: ' + pirmorezervuoti;
-      }
-
-      var pirmoz = document.getElementById('pirmoparduoti');
-
-      if (pirmoz) {
-        pirmoz.innerHTML = 'Parduotu: ' + pirmoparduoti;
-      }
-    },
-    error: function (_error4) {
-      function error() {
-        return _error4.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error4.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/pirmasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#pirmasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasc1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#pirmasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasc2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#pirmasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#pirmasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#pirmasc3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("pirmasc1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#pirmasc1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#pirmasc1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasc1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasc1").addEventListener("mouseout", function () {
-        document.getElementById("pirmasc1").style.fill = "transparent";
-      });
-      document.getElementById("pirmasc2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#pirmasc2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#pirmasc2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasc2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasc2").addEventListener("mouseout", function () {
-        document.getElementById("pirmasc2").style.fill = "transparent";
-      });
-      document.getElementById("pirmasc3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#pirmasc3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#pirmasc3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#pirmasc3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("pirmasc3").addEventListener("mouseout", function () {
-        document.getElementById("pirmasc3").style.fill = "transparent";
-      });
-    },
-    error: function (_error5) {
-      function error() {
-        return _error5.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error5.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/pirmasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          pirmolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          pirmoparduoti++;
-        } else {
-          rezervuota++;
-          pirmorezervuoti++;
-        }
-      }
-
-      var pirmo3alaisvu = document.getElementById('pirmo3alaisvu');
-
-      if (pirmo3alaisvu) {
-        pirmo3alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var pirmo3arezervuotu = document.getElementById('pirmo3arezervuotu');
-
-      if (pirmo3arezervuotu) {
-        pirmo3arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var pirmo3aparduotu = document.getElementById('pirmo3aparduotu');
-
-      if (pirmo3aparduotu) {
-        pirmo3aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var pirmox = document.getElementById('pirmolaisvi');
-
-      if (pirmox) {
-        pirmox.innerHTML = 'Laisvu: ' + pirmolaisvi;
-      }
-
-      var pirmoy = document.getElementById('pirmorezervuoti');
-
-      if (pirmoy) {
-        pirmoy.innerHTML = 'Rezervuotu: ' + pirmorezervuoti;
-      }
-
-      var pirmoz = document.getElementById('pirmoparduoti');
-
-      if (pirmoz) {
-        pirmoz.innerHTML = 'Parduotu: ' + pirmoparduoti;
-      }
-    },
-    error: function (_error6) {
-      function error() {
-        return _error6.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error6.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  }); //antras namas
-
-  $.ajax({
-    url: '/antrasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#antrasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#antrasa1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#antrasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#antrasa2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#antrasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#antrasa3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("antrasa1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#antrasa1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#antrasa1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasa1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasa1").addEventListener("mouseout", function () {
-        document.getElementById("antrasa1").style.fill = "transparent";
-      });
-      document.getElementById("antrasa2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#antrasa2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#antrasa2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasa2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasa2").addEventListener("mouseout", function () {
-        document.getElementById("antrasa2").style.fill = "transparent";
-      });
-      document.getElementById("antrasa3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#antrasa3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#antrasa3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasa3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasa3").addEventListener("mouseout", function () {
-        document.getElementById("antrasa3").style.fill = "transparent";
-      });
-    },
-    error: function (_error7) {
-      function error() {
-        return _error7.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error7.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/antrasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          antrolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          antroparduoti++;
-        } else {
-          rezervuota++;
-          antrorezervuoti++;
-        }
-      }
-
-      var antro1alaisvu = document.getElementById('antro1alaisvu');
-
-      if (antro1alaisvu) {
-        antro1alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var antro1arezervuotu = document.getElementById('antro1arezervuotu');
-
-      if (antro1arezervuotu) {
-        antro1arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var antro1aparduotu = document.getElementById('antro1aparduotu');
-
-      if (antro1aparduotu) {
-        antro1aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var antrox = document.getElementById('antrolaisvi');
-
-      if (antrox) {
-        antrox.innerHTML = 'Laisvu: ' + antrolaisvi;
-      }
-
-      var antroy = document.getElementById('antrorezervuoti');
-
-      if (antroy) {
-        antroy.innerHTML = 'Rezervuotu: ' + antrorezervuoti;
-      }
-
-      var antroz = document.getElementById('antroparduoti');
-
-      if (antroz) {
-        antroz.innerHTML = 'Parduotu: ' + antroparduoti;
-      }
-    },
-    error: function (_error8) {
-      function error() {
-        return _error8.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error8.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/antrasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#antrasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#antrasb1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#antrasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#antrasb2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#antrasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#antrasb3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("antrasb1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#antrasb1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#antrasb1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasb1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasb1").addEventListener("mouseout", function () {
-        document.getElementById("antrasb1").style.fill = "transparent";
-      });
-      document.getElementById("antrasb2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#antrasb2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#antrasb2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasb2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasb2").addEventListener("mouseout", function () {
-        document.getElementById("antrasb2").style.fill = "transparent";
-      });
-      document.getElementById("antrasb3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#antrasb3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#antrasb3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasb3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasb3").addEventListener("mouseout", function () {
-        document.getElementById("antrasb3").style.fill = "transparent";
-      });
-    },
-    error: function (_error9) {
-      function error() {
-        return _error9.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error9.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/antrasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          antrolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          antroparduoti++;
-        } else {
-          rezervuota++;
-          antrorezervuoti++;
-        }
-      }
-
-      var antro2alaisvu = document.getElementById('antro2alaisvu');
-
-      if (antro2alaisvu) {
-        antro2alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var antro2arezervuotu = document.getElementById('antro2arezervuotu');
-
-      if (antro2arezervuotu) {
-        antro2arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var antro2aparduotu = document.getElementById('antro2aparduotu');
-
-      if (antro2aparduotu) {
-        antro2aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var antrox = document.getElementById('antrolaisvi');
-
-      if (antrox) {
-        antrox.innerHTML = 'Laisvu: ' + antrolaisvi;
-      }
-
-      var antroy = document.getElementById('antrorezervuoti');
-
-      if (antroy) {
-        antroy.innerHTML = 'Rezervuotu: ' + antrorezervuoti;
-      }
-
-      var antroz = document.getElementById('antroparduoti');
-
-      if (antroz) {
-        antroz.innerHTML = 'Parduotu: ' + antroparduoti;
-      }
-    },
-    error: function (_error10) {
-      function error() {
-        return _error10.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error10.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/antrasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#antrasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#antrasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#antrasc1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[1]);
-        $("#antrasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#antrasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#antrasc2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[2].statusas);
-        $("#antrasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#antrasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#antrasc3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("antrasc1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#antrasc1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#antrasc1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasc1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasc1").addEventListener("mouseout", function () {
-        document.getElementById("antrasc1").style.fill = "transparent";
-      });
-      document.getElementById("antrasc2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#antrasc2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#antrasc2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasc2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasc2").addEventListener("mouseout", function () {
-        document.getElementById("antrasc2").style.fill = "transparent";
-      });
-      document.getElementById("antrasc3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#antrasc3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#antrasc3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#antrasc3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("antrasc3").addEventListener("mouseout", function () {
-        document.getElementById("antrasc3").style.fill = "transparent";
-      });
-    },
-    error: function (_error11) {
-      function error() {
-        return _error11.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error11.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/antrasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          antrolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          antroparduoti++;
-        } else {
-          rezervuota++;
-          antrorezervuoti++;
-        }
-      }
-
-      var antro3alaisvu = document.getElementById('antro3alaisvu');
-
-      if (antro3alaisvu) {
-        antro3alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var antro3arezervuotu = document.getElementById('antro3arezervuotu');
-
-      if (antro3arezervuotu) {
-        antro3arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var antro3aparduotu = document.getElementById('antro3aparduotu');
-
-      if (antro3aparduotu) {
-        antro3aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var antrox = document.getElementById('antrolaisvi');
-
-      if (antrox) {
-        antrox.innerHTML = 'Laisvu: ' + antrolaisvi;
-      }
-
-      var antroy = document.getElementById('antrorezervuoti');
-
-      if (antroy) {
-        antroy.innerHTML = 'Rezervuotu: ' + antrorezervuoti;
-      }
-
-      var antroz = document.getElementById('antroparduoti');
-
-      if (antroz) {
-        antroz.innerHTML = 'Parduotu: ' + antroparduoti;
-      }
-    },
-    error: function (_error12) {
-      function error() {
-        return _error12.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error12.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  }); //trecias namas
-
-  $.ajax({
-    url: '/treciasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#treciasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#treciasa1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#treciasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#treciasa2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#treciasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#treciasa3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("treciasa1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#treciasa1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#treciasa1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasa1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasa1").addEventListener("mouseout", function () {
-        document.getElementById("treciasa1").style.fill = "transparent";
-      });
-      document.getElementById("treciasa2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#treciasa2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#treciasa2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasa2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasa2").addEventListener("mouseout", function () {
-        document.getElementById("treciasa2").style.fill = "transparent";
-      });
-      document.getElementById("treciasa3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#treciasa3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#treciasa3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasa3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasa3").addEventListener("mouseout", function () {
-        document.getElementById("treciasa3").style.fill = "transparent";
-      });
-    },
-    error: function (_error13) {
-      function error() {
-        return _error13.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error13.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/treciasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          treciolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          trecioparduoti++;
-        } else {
-          rezervuota++;
-          treciorezervuoti++;
-        }
-      }
-
-      var trecio1alaisvu = document.getElementById('trecio1alaisvu');
-
-      if (trecio1alaisvu) {
-        trecio1alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var trecio1arezervuotu = document.getElementById('trecio1arezervuotu');
-
-      if (trecio1arezervuotu) {
-        trecio1arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var trecio1aparduotu = document.getElementById('trecio1aparduotu');
-
-      if (trecio1aparduotu) {
-        trecio1aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var treciox = document.getElementById('treciolaisvi');
-
-      if (treciox) {
-        treciox.innerHTML = 'Laisvu: ' + treciolaisvi;
-      }
-
-      var trecioy = document.getElementById('antrorezervuoti');
-
-      if (trecioy) {
-        trecioy.innerHTML = 'Rezervuotu: ' + treciorezervuoti;
-      }
-
-      var trecioz = document.getElementById('trecioparduoti');
-
-      if (trecioz) {
-        trecioz.innerHTML = 'Parduotu: ' + trecioparduoti;
-      }
-    },
-    error: function (_error14) {
-      function error() {
-        return _error14.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error14.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/treciasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#treciasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#treciasb1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#treciasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#treciasb2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#treciasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#treciasb3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("treciasb1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#treciasb1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#treciasb1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasb1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasb1").addEventListener("mouseout", function () {
-        document.getElementById("treciasb1").style.fill = "transparent";
-      });
-      document.getElementById("treciasb2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#treciasb2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#treciasb2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasb2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasb2").addEventListener("mouseout", function () {
-        document.getElementById("treciasb2").style.fill = "transparent";
-      });
-      document.getElementById("treciasb3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#treciasb3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#treciasb3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasb3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasb3").addEventListener("mouseout", function () {
-        document.getElementById("treciasb3").style.fill = "transparent";
-      });
-    },
-    error: function (_error15) {
-      function error() {
-        return _error15.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error15.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/treciasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          treciolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          trecioparduoti++;
-        } else {
-          rezervuota++;
-          treciorezervuoti++;
-        }
-      }
-
-      var trecio2alaisvu = document.getElementById('trecio2alaisvu');
-
-      if (trecio2alaisvu) {
-        trecio2alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var trecio2arezervuotu = document.getElementById('trecio2arezervuotu');
-
-      if (trecio2arezervuotu) {
-        trecio2arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var trecio2aparduotu = document.getElementById('trecio2aparduotu');
-
-      if (trecio2aparduotu) {
-        trecio2aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var treciox = document.getElementById('treciolaisvi');
-
-      if (treciox) {
-        treciox.innerHTML = 'Laisvu: ' + treciolaisvi;
-      }
-
-      var trecioy = document.getElementById('treciorezervuoti');
-
-      if (trecioy) {
-        trecioy.innerHTML = 'Rezervuotu: ' + treciorezervuoti;
-      }
-
-      var trecioz = document.getElementById('trecioparduoti');
-
-      if (trecioz) {
-        trecioz.innerHTML = 'Parduotu: ' + trecioparduoti;
-      }
-    },
-    error: function (_error16) {
-      function error() {
-        return _error16.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error16.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/treciasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#treciasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#treciasc1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#treciasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#treciasc2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#treciasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#treciasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#treciasc3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("treciasc1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#treciasc1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#treciasc1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasc1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasc1").addEventListener("mouseout", function () {
-        document.getElementById("treciasc1").style.fill = "transparent";
-      });
-      document.getElementById("treciasc2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#treciasc2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#treciasc2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasc2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasc2").addEventListener("mouseout", function () {
-        document.getElementById("treciasc2").style.fill = "transparent";
-      });
-      document.getElementById("treciasc3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#treciasc3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#treciasc3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#treciasc3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("treciasc3").addEventListener("mouseout", function () {
-        document.getElementById("treciasc3").style.fill = "transparent";
-      });
-    },
-    error: function (_error17) {
-      function error() {
-        return _error17.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error17.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/treciasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          treciolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          trecioparduoti++;
-        } else {
-          rezervuota++;
-          treciorezervuoti++;
-        }
-      }
-
-      var trecio3alaisvu = document.getElementById('trecio3alaisvu');
-
-      if (trecio3alaisvu) {
-        trecio3alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var trecio3arezervuotu = document.getElementById('trecio3arezervuotu');
-
-      if (trecio3arezervuotu) {
-        trecio3arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var trecio3aparduotu = document.getElementById('trecio3aparduotu');
-
-      if (trecio3aparduotu) {
-        trecio3aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var treciox = document.getElementById('treciolaisvi');
-
-      if (treciox) {
-        treciox.innerHTML = 'Laisvu: ' + treciolaisvi;
-      }
-
-      var trecioy = document.getElementById('treciorezervuoti');
-
-      if (trecioy) {
-        trecioy.innerHTML = 'Rezervuotu: ' + treciorezervuoti;
-      }
-
-      var trecioz = document.getElementById('trecioparduoti');
-
-      if (trecioz) {
-        trecioz.innerHTML = 'Parduotu: ' + trecioparduoti;
-      }
-    },
-    error: function (_error18) {
-      function error() {
-        return _error18.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error18.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  }); //ketvirtas namas
-
-  $.ajax({
-    url: '/ketvirtasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("ketvirtasa1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasa1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasa1").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasa1").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasa2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasa2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasa2").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasa2").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasa3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasa3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasa3").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasa3").style.fill = "transparent";
-      });
-    },
-    error: function (_error19) {
-      function error() {
-        return _error19.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error19.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/ketvirtasa',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          ketvirtolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          ketvirtoparduoti++;
-        } else {
-          rezervuota++;
-          ketvirtorezervuoti++;
-        }
-      }
-
-      var ketvirto1alaisvu = document.getElementById('ketvirto1alaisvu');
-
-      if (ketvirto1alaisvu) {
-        ketvirto1alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var ketvirto1arezervuotu = document.getElementById('ketvirto1arezervuotu');
-
-      if (ketvirto1arezervuotu) {
-        ketvirto1arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var ketvirto1aparduotu = document.getElementById('ketvirto1aparduotu');
-
-      if (ketvirto1aparduotu) {
-        ketvirto1aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var ketvirtox = document.getElementById('ketvirtolaisvi');
-
-      if (ketvirtox) {
-        ketvirtox.innerHTML = 'Laisvu: ' + ketvirtolaisvi;
-      }
-
-      var ketvirtoy = document.getElementById('ketvirtorezervuoti');
-
-      if (ketvirtoy) {
-        ketvirtoy.innerHTML = 'Rezervuotu: ' + ketvirtorezervuoti;
-      }
-
-      var ketvirtoz = document.getElementById('ketvirtoparduoti');
-
-      if (ketvirtoz) {
-        ketvirtoz.innerHTML = 'Parduotu: ' + ketvirtoparduoti;
-      }
-    },
-    error: function (_error20) {
-      function error() {
-        return _error20.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error20.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/ketvirtasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("ketvirtasb1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasb1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasb1").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasb1").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasb2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasb2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasb2").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasb2").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasb3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasb3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasb3").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasb3").style.fill = "transparent";
-      });
-    },
-    error: function (_error21) {
-      function error() {
-        return _error21.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error21.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/ketvirtasb',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          ketvirtolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          ketvirtoparduoti++;
-        } else {
-          rezervuota++;
-          ketvirtorezervuoti++;
-        }
-      }
-
-      var ketvirto2alaisvu = document.getElementById('ketvirto2alaisvu');
-
-      if (ketvirto2alaisvu) {
-        ketvirto2alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var ketvirto2arezervuotu = document.getElementById('ketvirto2arezervuotu');
-
-      if (ketvirto2arezervuotu) {
-        ketvirto2arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var ketvirto2aparduotu = document.getElementById('ketvirto2aparduotu');
-
-      if (ketvirto2aparduotu) {
-        ketvirto2aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var ketvirtox = document.getElementById('ketvirtolaisvi');
-
-      if (ketvirtox) {
-        ketvirtox.innerHTML = 'Laisvu: ' + ketvirtolaisvi;
-      }
-
-      var ketvirtoy = document.getElementById('ketvirtorezervuoti');
-
-      if (ketvirtoy) {
-        ketvirtoy.innerHTML = 'Rezervuotu: ' + ketvirtorezervuoti;
-      }
-
-      var ketvirtoz = document.getElementById('ketvirtoparduoti');
-
-      if (ketvirtoz) {
-        ketvirtoz.innerHTML = 'Parduotu: ' + ketvirtoparduoti;
-      }
-    },
-    error: function (_error22) {
-      function error() {
-        return _error22.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error22.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/ketvirtasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        // console.log(data[0].statusas);
-        $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      document.getElementById("ketvirtasc1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasc1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasc1").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasc1").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasc2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasc2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasc2").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasc2").style.fill = "transparent";
-      });
-      document.getElementById("ketvirtasc3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#ketvirtasc3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("ketvirtasc3").addEventListener("mouseout", function () {
-        document.getElementById("ketvirtasc3").style.fill = "transparent";
-      });
-    },
-    error: function (_error23) {
-      function error() {
-        return _error23.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error23.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/ketvirtasc',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(this.url);
-      var laisvi = 0;
-      var rezervuota = 0;
-      var parduota = 0;
-
-      for (var i = 0; i < 3; i++) {
-        if (data[i].statusas == 0) {
-          laisvi++;
-          ketvirtolaisvi++;
-        } else if (data[i].statusas == 1) {
-          parduota++;
-          ketvirtoparduoti++;
-        } else {
-          rezervuota++;
-          ketvirtorezervuoti++;
-        }
-      }
-
-      var ketvirto3alaisvu = document.getElementById('ketvirto3alaisvu');
-
-      if (ketvirto3alaisvu) {
-        ketvirto3alaisvu.innerHTML = 'Laisvu: ' + laisvi;
-      }
-
-      var ketvirto3arezervuotu = document.getElementById('ketvirto3arezervuotu');
-
-      if (ketvirto3arezervuotu) {
-        ketvirto3arezervuotu.innerHTML = 'Rezervuotu: ' + rezervuota;
-      }
-
-      var ketvirto3aparduotu = document.getElementById('ketvirto3aparduotu');
-
-      if (ketvirto3aparduotu) {
-        ketvirto3aparduotu.innerHTML = 'Parduotu: ' + parduota;
-      }
-
-      var ketvirtox = document.getElementById('ketvirtolaisvi');
-
-      if (ketvirtox) {
-        ketvirtox.innerHTML = 'Laisvu: ' + ketvirtolaisvi;
-      }
-
-      var ketvirtoy = document.getElementById('ketvirtorezervuoti');
-
-      if (ketvirtoy) {
-        ketvirtoy.innerHTML = 'Rezervuotu: ' + ketvirtorezervuoti;
-      }
-
-      var ketvirtoz = document.getElementById('ketvirtoparduoti');
-
-      if (ketvirtoz) {
-        ketvirtoz.innerHTML = 'Parduotu: ' + ketvirtoparduoti;
-      }
-    },
-    error: function (_error24) {
-      function error() {
-        return _error24.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error24.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  }); //kotedzai
-
-  $.ajax({
-    url: '/kotedzasjson',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      // console.log(data);
-      if (data[0].statusas == 0) {
-        $("#kotedzas1").attr('d', data[0].cords).css("fill", "transparent");
-      } else if (data[0].statusas == 1) {
-        $("#kotedzas1").attr('d', data[0].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas1").attr('d', data[0].cords).css("fill", "transparent");
-      }
-
-      if (data[1].statusas == 0) {
-        $("#kotedzas2").attr('d', data[1].cords).css("fill", "transparent");
-      } else if (data[1].statusas == 1) {
-        $("#kotedzas2").attr('d', data[1].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas2").attr('d', data[1].cords).css("fill", "transparent");
-      }
-
-      if (data[2].statusas == 0) {
-        $("#kotedzas3").attr('d', data[2].cords).css("fill", "transparent");
-      } else if (data[2].statusas == 1) {
-        $("#kotedzas3").attr('d', data[2].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas3").attr('d', data[2].cords).css("fill", "transparent");
-      }
-
-      if (data[3].statusas == 0) {
-        $("#kotedzas4").attr('d', data[3].cords).css("fill", "transparent");
-      } else if (data[3].statusas == 1) {
-        $("#kotedzas4").attr('d', data[3].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas4").attr('d', data[3].cords).css("fill", "transparent");
-      }
-
-      if (data[4].statusas == 0) {
-        $("#kotedzas5").attr('d', data[4].cords).css("fill", "transparent");
-      } else if (data[4].statusas == 1) {
-        $("#kotedzas5").attr('d', data[4].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas5").attr('d', data[4].cords).css("fill", "transparent");
-      }
-
-      if (data[5].statusas == 0) {
-        $("#kotedzas6").attr('d', data[5].cords).css("fill", "transparent");
-      } else if (data[5].statusas == 1) {
-        $("#kotedzas6").attr('d', data[5].cords).css("fill", "transparent");
-      } else {
-        $("#kotedzas6").attr('d', data[5].cords).css("fill", "transparent");
-      } // if(data[0].statusas == 0);
-
-
-      document.getElementById("kotedzas1").addEventListener("mouseover", function () {
-        if (data[0].statusas == 0) {
-          $("#kotedzas1").attr('d', data[0].cords).css("fill", "#ccffcc");
-        } else if (data[0].statusas == 1) {
-          $("#kotedzas1").attr('d', data[0].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas1").attr('d', data[0].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas1").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas1").style.fill = "transparent";
-      });
-      document.getElementById("kotedzas2").addEventListener("mouseover", function () {
-        if (data[1].statusas == 0) {
-          // console.log(data[0].statusas);
-          $("#kotedzas2").attr('d', data[1].cords).css("fill", "#ccffcc");
-        } else if (data[1].statusas == 1) {
-          $("#kotedzas2").attr('d', data[1].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas2").attr('d', data[1].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas2").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas2").style.fill = "transparent";
-      }); // console.log(123);
-
-      document.getElementById("kotedzas3").addEventListener("mouseover", function () {
-        if (data[2].statusas == 0) {
-          // console.log(data[2].statusas);
-          $("#kotedzas3").attr('d', data[2].cords).css("fill", "#ccffcc");
-        } else if (data[2].statusas == 1) {
-          $("#kotedzas3").attr('d', data[2].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas3").attr('d', data[2].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas3").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas3").style.fill = "transparent";
-      });
-      document.getElementById("kotedzas4").addEventListener("mouseover", function () {
-        if (data[3].statusas == 0) {
-          // console.log(data[0].statusas);
-          $("#kotedzas4").attr('d', data[3].cords).css("fill", "#ccffcc");
-        } else if (data[3].statusas == 1) {
-          $("#kotedzas4").attr('d', data[3].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas4").attr('d', data[3].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas4").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas4").style.fill = "transparent";
-      });
-      document.getElementById("kotedzas5").addEventListener("mouseover", function () {
-        if (data[4].statusas == 0) {
-          // console.log(data[0].statusas);
-          $("#kotedzas5").attr('d', data[4].cords).css("fill", "#ccffcc");
-        } else if (data[4].statusas == 1) {
-          $("#kotedzas5").attr('d', data[4].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas5").attr('d', data[4].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas5").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas5").style.fill = "transparent";
-      });
-      document.getElementById("kotedzas6").addEventListener("mouseover", function () {
-        if (data[5].statusas == 0) {
-          // console.log(data[0].statusas);
-          $("#kotedzas6").attr('d', data[5].cords).css("fill", "#ccffcc");
-        } else if (data[5].statusas == 1) {
-          $("#kotedzas6").attr('d', data[5].cords).css("fill", "#ff6666");
-        } else {
-          $("#kotedzas6").attr('d', data[5].cords).css("fill", "#f4f442");
-        }
-      });
-      document.getElementById("kotedzas6").addEventListener("mouseout", function () {
-        document.getElementById("kotedzas6").style.fill = "transparent";
-      });
-    },
-    error: function (_error25) {
-      function error() {
-        return _error25.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error25.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-  $.ajax({
-    url: '/kotedzasjson',
-    method: 'GET',
-    data: {},
-    success: function success(data) {
-      for (var i = 0; i < 6; i++) {
-        if (data[i].statusas == 0) {
-          kotedzolaisvi++;
-        } else if (data[i].statusas == 1) {
-          kotedzoparduoti++;
-        } else {
-          kotedzorezervuoti++;
-        }
-      }
-
-      var kotedzox = document.getElementById('kotedzolaisvi');
-
-      if (kotedzox) {
-        kotedzox.innerHTML = 'Laisvu: ' + kotedzolaisvi;
-      }
-
-      var kotedzoy = document.getElementById('kotedzorezervuoti');
-
-      if (kotedzoy) {
-        kotedzoy.innerHTML = 'Rezervuotu: ' + kotedzorezervuoti;
-      }
-
-      var kotedzoz = document.getElementById('kotedzoparduoti');
-
-      if (kotedzoz) {
-        kotedzoz.innerHTML = 'Parduotu: ' + kotedzoparduoti;
-      }
-    },
-    error: function (_error26) {
-      function error() {
-        return _error26.apply(this, arguments);
-      }
-
-      error.toString = function () {
-        return _error26.toString();
-      };
-
-      return error;
-    }(function () {
-      console.log(error);
-    })
-  });
-}; //svg
-
-
-var pirmasd = document.getElementById("pirmasd");
-
-if (pirmasd !== null && pirmasd !== undefined) {
-  document.getElementById("pirmasd").addEventListener("mouseover", function () {
-    // console.log('uzsidejo');
-    document.getElementById("pirmasd").style.fill = "#1a2b87";
-  });
-  document.getElementById("pirmasd").addEventListener("mouseout", function () {
-    document.getElementById("pirmasd").style.fill = "transparent";
-  });
-}
-
-var antrasd = document.getElementById("antrasd");
-
-if (antrasd !== null && antrasd !== undefined) {
-  document.getElementById("antrasd").addEventListener("mouseover", function () {
-    document.getElementById("antrasd").style.fill = "#1a2b87";
-  });
-  document.getElementById("antrasd").addEventListener("mouseout", function () {
-    document.getElementById("antrasd").style.fill = "transparent";
-  });
-}
-
-var treciasd = document.getElementById("treciasd");
-
-if (treciasd !== null && treciasd !== undefined) {
-  document.getElementById("treciasd").addEventListener("mouseover", function () {
-    document.getElementById("treciasd").style.fill = "#1a2b87";
-  });
-  document.getElementById("treciasd").addEventListener("mouseout", function () {
-    document.getElementById("treciasd").style.fill = "transparent";
-  });
-}
-
-var ketvirtasd = document.getElementById("ketvirtasd");
-
-if (ketvirtasd !== null && ketvirtasd !== undefined) {
-  document.getElementById("ketvirtasd").addEventListener("mouseover", function () {
-    document.getElementById("ketvirtasd").style.fill = "#1a2b87";
-  });
-  document.getElementById("ketvirtasd").addEventListener("mouseout", function () {
-    document.getElementById("ketvirtasd").style.fill = "transparent";
-  });
-}
-
-var kotedzas = document.getElementById("kotedzas");
-
-if (kotedzas !== null && kotedzas !== undefined) {
-  document.getElementById("kotedzas").addEventListener("mouseover", function () {
-    document.getElementById("kotedzas").style.fill = "#1a2b87";
-  });
-  document.getElementById("kotedzas").addEventListener("mouseout", function () {
-    document.getElementById("kotedzas").style.fill = "transparent";
-  });
-}
-
-var pirmo1a = document.getElementById("pirmo1a");
-
-if (pirmo1a !== null && pirmo1a !== undefined) {
-  document.getElementById("pirmo1a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo1a").style.fill = "#1a2b87";
-  });
-  document.getElementById("pirmo1a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo1a").style.fill = "transparent";
-  });
-}
-
-var pirmo2a = document.getElementById("pirmo2a");
-
-if (pirmo2a !== null && pirmo2a !== undefined) {
-  document.getElementById("pirmo2a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo2a").style.fill = "#1a2b87";
-  });
-  document.getElementById("pirmo2a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo2a").style.fill = "transparent";
-  });
-}
-
-var pirmo3a = document.getElementById("pirmo3a");
-
-if (pirmo3a !== null && pirmo3a !== undefined) {
-  document.getElementById("pirmo3a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo3a").style.fill = "#1a2b87";
-  });
-  document.getElementById("pirmo3a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo3a").style.fill = "transparent";
-  });
-}
-
-var antro1a = document.getElementById("antro1a");
-
-if (antro1a !== null && antro1a !== undefined) {
-  document.getElementById("antro1a").addEventListener("mouseover", function () {
-    document.getElementById("antro1a").style.fill = "#1a2b87";
-  });
-  document.getElementById("antro1a").addEventListener("mouseout", function () {
-    document.getElementById("antro1a").style.fill = "transparent";
-  });
-}
-
-var antro2a = document.getElementById("antro2a");
-
-if (antro2a !== null && antro2a !== undefined) {
-  document.getElementById("antro2a").addEventListener("mouseover", function () {
-    document.getElementById("antro2a").style.fill = "#1a2b87";
-  });
-  document.getElementById("antro2a").addEventListener("mouseout", function () {
-    document.getElementById("antro2a").style.fill = "transparent";
-  });
-}
-
-var antro3a = document.getElementById("antro3a");
-
-if (antro3a !== null && antro3a !== undefined) {
-  document.getElementById("antro3a").addEventListener("mouseover", function () {
-    document.getElementById("antro3a").style.fill = "#1a2b87";
-  });
-  document.getElementById("antro3a").addEventListener("mouseout", function () {
-    document.getElementById("antro3a").style.fill = "transparent";
-  });
-}
-
-var trecio1a = document.getElementById("trecio1a");
-
-if (trecio1a !== null && trecio1a !== undefined) {
-  document.getElementById("trecio1a").addEventListener("mouseover", function () {
-    document.getElementById("trecio1a").style.fill = "#1a2b87";
-  });
-  document.getElementById("trecio1a").addEventListener("mouseout", function () {
-    document.getElementById("trecio1a").style.fill = "transparent";
-  });
-}
-
-var trecio2a = document.getElementById("trecio2a");
-
-if (trecio2a !== null && trecio2a !== undefined) {
-  document.getElementById("trecio2a").addEventListener("mouseover", function () {
-    document.getElementById("trecio2a").style.fill = "#1a2b87";
-  });
-  document.getElementById("trecio2a").addEventListener("mouseout", function () {
-    document.getElementById("trecio2a").style.fill = "transparent";
-  });
-}
-
-var trecio3a = document.getElementById("trecio3a");
-
-if (trecio3a !== null && trecio3a !== undefined) {
-  document.getElementById("trecio3a").addEventListener("mouseover", function () {
-    document.getElementById("trecio3a").style.fill = "#1a2b87";
-  });
-  document.getElementById("trecio3a").addEventListener("mouseout", function () {
-    document.getElementById("trecio3a").style.fill = "transparent";
-  });
-}
-
-var ketvirto1a = document.getElementById("ketvirto1a");
-
-if (ketvirto1a !== null && ketvirto1a !== undefined) {
-  document.getElementById("ketvirto1a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto1a").style.fill = "#1a2b87";
-  });
-  document.getElementById("ketvirto1a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto1a").style.fill = "transparent";
-  });
-}
-
-var ketvirto2a = document.getElementById("ketvirto2a");
-
-if (ketvirto2a !== null && ketvirto2a !== undefined) {
-  document.getElementById("ketvirto2a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto2a").style.fill = "#1a2b87";
-  });
-  document.getElementById("ketvirto2a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto2a").style.fill = "transparent";
-  });
-}
-
-var ketvirto3a = document.getElementById("ketvirto3a");
-
-if (ketvirto3a !== null && ketvirto3a !== undefined) {
-  document.getElementById("ketvirto3a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto3a").style.fill = "#1a2b87";
-  });
-  document.getElementById("ketvirto3a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto3a").style.fill = "transparent";
-  });
-} //tooltip
-
-
-var pirmasd = document.getElementById("pirmasd");
-
-if (pirmasd !== null && pirmasd !== undefined) {
-  document.getElementById("pirmasd").addEventListener("mouseover", function () {
-    document.getElementById("house1").style.display = "block";
-  });
-  document.getElementById("pirmasd").addEventListener("mouseout", function () {
-    document.getElementById("house1").style.display = "none";
-  });
-}
-
-var antrasd = document.getElementById("antrasd");
-
-if (antrasd !== null && antrasd !== undefined) {
-  document.getElementById("antrasd").addEventListener("mouseover", function () {
-    document.getElementById("house2").style.display = "block";
-  });
-  document.getElementById("antrasd").addEventListener("mouseout", function () {
-    document.getElementById("house2").style.display = "none";
-  });
-}
-
-var treciasd = document.getElementById("treciasd");
-
-if (treciasd !== null && treciasd !== undefined) {
-  document.getElementById("treciasd").addEventListener("mouseover", function () {
-    document.getElementById("house3").style.display = "block";
-  });
-  document.getElementById("treciasd").addEventListener("mouseout", function () {
-    document.getElementById("house3").style.display = "none";
-  });
-}
-
-var ketvirtasd = document.getElementById("ketvirtasd");
-
-if (ketvirtasd !== null && ketvirtasd !== undefined) {
-  document.getElementById("ketvirtasd").addEventListener("mouseover", function () {
-    document.getElementById("house4").style.display = "block";
-  });
-  document.getElementById("ketvirtasd").addEventListener("mouseout", function () {
-    document.getElementById("house4").style.display = "none";
-  });
-}
-
-var kotedzas = document.getElementById("kotedzas");
-
-if (kotedzas !== null && kotedzas !== undefined) {
-  document.getElementById("kotedzas").addEventListener("mouseover", function () {
-    document.getElementById("house5").style.display = "block";
-  });
-  document.getElementById("kotedzas").addEventListener("mouseout", function () {
-    document.getElementById("house5").style.display = "none";
-  });
-}
-
-var pirmo1a = document.getElementById("pirmo1a");
-
-if (pirmo1a !== null && pirmo1a !== undefined) {
-  document.getElementById("pirmo1a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo1").style.display = "block";
-  });
-  document.getElementById("pirmo1a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo1").style.display = "none";
-  });
-}
-
-var pirmo2a = document.getElementById("pirmo2a");
-
-if (pirmo2a !== null && pirmo2a !== undefined) {
-  document.getElementById("pirmo2a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo2").style.display = "block";
-  });
-  document.getElementById("pirmo2a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo2").style.display = "none";
-  });
-}
-
-var pirmo3a = document.getElementById("pirmo3a");
-
-if (pirmo3a !== null && pirmo3a !== undefined) {
-  document.getElementById("pirmo3a").addEventListener("mouseover", function () {
-    document.getElementById("pirmo3").style.display = "block";
-  });
-  document.getElementById("pirmo3a").addEventListener("mouseout", function () {
-    document.getElementById("pirmo3").style.display = "none";
-  });
-}
-
-var antro1a = document.getElementById("antro1a");
-
-if (antro1a !== null && antro1a !== undefined) {
-  document.getElementById("antro1a").addEventListener("mouseover", function () {
-    document.getElementById("antro1").style.display = "block";
-  });
-  document.getElementById("antro1a").addEventListener("mouseout", function () {
-    document.getElementById("antro1").style.display = "none";
-  });
-}
-
-var antro2a = document.getElementById("antro2a");
-
-if (antro2a !== null && antro2a !== undefined) {
-  document.getElementById("antro2a").addEventListener("mouseover", function () {
-    document.getElementById("antro2").style.display = "block";
-  });
-  document.getElementById("antro2a").addEventListener("mouseout", function () {
-    document.getElementById("antro2").style.display = "none";
-  });
-}
-
-var antro3a = document.getElementById("antro3a");
-
-if (antro3a !== null && antro3a !== undefined) {
-  document.getElementById("antro3a").addEventListener("mouseover", function () {
-    document.getElementById("antro3").style.display = "block";
-  });
-  document.getElementById("antro3a").addEventListener("mouseout", function () {
-    document.getElementById("antro3").style.display = "none";
-  });
-}
-
-var trecio1a = document.getElementById("trecio1a");
-
-if (trecio1a !== null && trecio1a !== undefined) {
-  document.getElementById("trecio1a").addEventListener("mouseover", function () {
-    document.getElementById("trecio1").style.display = "block";
-  });
-  document.getElementById("trecio1a").addEventListener("mouseout", function () {
-    document.getElementById("trecio1").style.display = "none";
-  });
-}
-
-var trecio2a = document.getElementById("trecio2a");
-
-if (trecio2a !== null && trecio2a !== undefined) {
-  document.getElementById("trecio2a").addEventListener("mouseover", function () {
-    document.getElementById("trecio2").style.display = "block";
-  });
-  document.getElementById("trecio2a").addEventListener("mouseout", function () {
-    document.getElementById("trecio2").style.display = "none";
-  });
-}
-
-var trecio3a = document.getElementById("trecio3a");
-
-if (trecio3a !== null && trecio3a !== undefined) {
-  document.getElementById("trecio3a").addEventListener("mouseover", function () {
-    document.getElementById("trecio3").style.display = "block";
-  });
-  document.getElementById("trecio3a").addEventListener("mouseout", function () {
-    document.getElementById("trecio3").style.display = "none";
-  });
-}
-
-var ketvirto1a = document.getElementById("ketvirto1a");
-
-if (ketvirto1a !== null && ketvirto1a !== undefined) {
-  document.getElementById("ketvirto1a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto1").style.display = "block";
-  });
-  document.getElementById("ketvirto1a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto1").style.display = "none";
-  });
-}
-
-var ketvirto2a = document.getElementById("ketvirto2a");
-
-if (ketvirto2a !== null && ketvirto2a !== undefined) {
-  document.getElementById("ketvirto2a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto2").style.display = "block";
-  });
-  document.getElementById("ketvirto2a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto2").style.display = "none";
-  });
-}
-
-var ketvirto3a = document.getElementById("ketvirto3a");
-
-if (ketvirto3a !== null && ketvirto3a !== undefined) {
-  document.getElementById("ketvirto3a").addEventListener("mouseover", function () {
-    document.getElementById("ketvirto3").style.display = "block";
-  });
-  document.getElementById("ketvirto3a").addEventListener("mouseout", function () {
-    document.getElementById("ketvirto3").style.display = "none";
-  });
-} //stogelio img vir navigacijos
-
-
-var headerapieprojekta = document.getElementById("headerapieprojekta");
-
-if (headerapieprojekta !== null && headerapieprojekta !== undefined) {
-  document.getElementById("headerapieprojekta").addEventListener("mouseover", function () {
-    document.getElementById("apiestogelis").style.display = "block";
-  });
-  document.getElementById("headerapieprojekta").addEventListener("mouseout", function () {
-    document.getElementById("apiestogelis").style.display = "none";
-  });
-}
-
-var headerbutai = document.getElementById("headerbutai");
-
-if (headerbutai !== null && headerbutai !== undefined) {
-  document.getElementById("headerbutai").addEventListener("mouseover", function () {
-    document.getElementById("butaistogelis").style.display = "block";
-  });
-  document.getElementById("headerbutai").addEventListener("mouseout", function () {
-    document.getElementById("butaistogelis").style.display = "none";
-  });
-}
-
-var headerkotedzai = document.getElementById("headerkotedzai");
-
-if (headerkotedzai !== null && headerkotedzai !== undefined) {
-  document.getElementById("headerkotedzai").addEventListener("mouseover", function () {
-    document.getElementById("kotedzaistogelis").style.display = "block";
-  });
-  document.getElementById("headerkotedzai").addEventListener("mouseout", function () {
-    document.getElementById("kotedzaistogelis").style.display = "none";
-  });
-}
-
-var headervieta = document.getElementById("headervieta");
-
-if (headervieta !== null && headervieta !== undefined) {
-  document.getElementById("headervieta").addEventListener("mouseover", function () {
-    document.getElementById("vietastogelis").style.display = "block";
-  });
-  document.getElementById("headervieta").addEventListener("mouseout", function () {
-    document.getElementById("vietastogelis").style.display = "none";
-  });
-}
-
-var headerkontaktai = document.getElementById("headerkontaktai");
-
-if (headerkontaktai !== null && headerkontaktai !== undefined) {
-  document.getElementById("headerkontaktai").addEventListener("mouseover", function () {
-    document.getElementById("kontaktaistogelis").style.display = "block";
-  });
-  document.getElementById("headerkontaktai").addEventListener("mouseout", function () {
-    document.getElementById("kontaktaistogelis").style.display = "none";
-  });
-}
-
-var kotedzas1 = document.getElementById("kotedzas1");
-
-if (kotedzas1 !== null && kotedzas1 !== undefined) {
-  document.getElementById("kotedzas1").addEventListener("mouseover", function () {
-    document.getElementById("pirmaskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas1").addEventListener("mouseout", function () {
-    document.getElementById("pirmaskotedzas").style.display = "none";
-  });
-}
-
-var kotedzas2 = document.getElementById("kotedzas2");
-
-if (kotedzas2 !== null && kotedzas2 !== undefined) {
-  document.getElementById("kotedzas2").addEventListener("mouseover", function () {
-    document.getElementById("antraskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas2").addEventListener("mouseout", function () {
-    document.getElementById("antraskotedzas").style.display = "none";
-  });
-}
-
-var kotedzas3 = document.getElementById("kotedzas3");
-
-if (kotedzas3 !== null && kotedzas3 !== undefined) {
-  document.getElementById("kotedzas3").addEventListener("mouseover", function () {
-    document.getElementById("treciaskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas3").addEventListener("mouseout", function () {
-    document.getElementById("treciaskotedzas").style.display = "none";
-  });
-}
-
-var kotedzas4 = document.getElementById("kotedzas4");
-
-if (kotedzas4 !== null && kotedzas4 !== undefined) {
-  document.getElementById("kotedzas4").addEventListener("mouseover", function () {
-    document.getElementById("ketvirtaskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas4").addEventListener("mouseout", function () {
-    document.getElementById("ketvirtaskotedzas").style.display = "none";
-  });
-}
-
-var kotedzas5 = document.getElementById("kotedzas5");
-
-if (kotedzas5 !== null && kotedzas5 !== undefined) {
-  document.getElementById("kotedzas5").addEventListener("mouseover", function () {
-    document.getElementById("penktaskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas5").addEventListener("mouseout", function () {
-    document.getElementById("penktaskotedzas").style.display = "none";
-  });
-}
-
-var kotedzas6 = document.getElementById("kotedzas6");
-
-if (kotedzas6 !== null && kotedzas6 !== undefined) {
-  document.getElementById("kotedzas6").addEventListener("mouseover", function () {
-    document.getElementById("sestaskotedzas").style.display = "block";
-  });
-  document.getElementById("kotedzas6").addEventListener("mouseout", function () {
-    document.getElementById("sestaskotedzas").style.display = "none";
-  });
-}
-
-var pirmasa1 = document.getElementById("pirmasa1");
-
-if (pirmasa1 !== null && pirmasa1 !== undefined) {
-  document.getElementById("pirmasa1").addEventListener("mouseover", function () {
-    document.getElementById("pa1").style.display = "block";
-  });
-  document.getElementById("pirmasa1").addEventListener("mouseout", function () {
-    document.getElementById("pa1").style.display = "none";
-  });
-}
-
-var pirmasa2 = document.getElementById("pirmasa2");
-
-if (pirmasa2 !== null && pirmasa2 !== undefined) {
-  document.getElementById("pirmasa2").addEventListener("mouseover", function () {
-    document.getElementById("pa2").style.display = "block";
-  });
-  document.getElementById("pirmasa2").addEventListener("mouseout", function () {
-    document.getElementById("pa2").style.display = "none";
-  });
-}
-
-var pirmasa3 = document.getElementById("pirmasa3");
-
-if (pirmasa3 !== null && pirmasa3 !== undefined) {
-  document.getElementById("pirmasa3").addEventListener("mouseover", function () {
-    document.getElementById("pa3").style.display = "block";
-  });
-  document.getElementById("pirmasa3").addEventListener("mouseout", function () {
-    document.getElementById("pa3").style.display = "none";
-  });
-}
-
-var pirmasb1 = document.getElementById("pirmasb1");
-
-if (pirmasb1 !== null && pirmasb1 !== undefined) {
-  document.getElementById("pirmasb1").addEventListener("mouseover", function () {
-    document.getElementById("pb1").style.display = "block";
-  });
-  document.getElementById("pirmasb1").addEventListener("mouseout", function () {
-    document.getElementById("pb1").style.display = "none";
-  });
-}
-
-var pirmasb2 = document.getElementById("pirmasb2");
-
-if (pirmasb2 !== null && pirmasb2 !== undefined) {
-  document.getElementById("pirmasb2").addEventListener("mouseover", function () {
-    document.getElementById("pb2").style.display = "block";
-  });
-  document.getElementById("pirmasb2").addEventListener("mouseout", function () {
-    document.getElementById("pb2").style.display = "none";
-  });
-}
-
-var pirmasb3 = document.getElementById("pirmasb3");
-
-if (pirmasb3 !== null && pirmasb3 !== undefined) {
-  document.getElementById("pirmasb3").addEventListener("mouseover", function () {
-    document.getElementById("pb3").style.display = "block";
-  });
-  document.getElementById("pirmasb3").addEventListener("mouseout", function () {
-    document.getElementById("pb3").style.display = "none";
-  });
-}
-
-var pirmasc1 = document.getElementById("pirmasc1");
-
-if (pirmasc1 !== null && pirmasc1 !== undefined) {
-  document.getElementById("pirmasc1").addEventListener("mouseover", function () {
-    document.getElementById("pc1").style.display = "block";
-  });
-  document.getElementById("pirmasc1").addEventListener("mouseout", function () {
-    document.getElementById("pc1").style.display = "none";
-  });
-}
-
-var pirmasc2 = document.getElementById("pirmasc2");
-
-if (pirmasc2 !== null && pirmasc2 !== undefined) {
-  document.getElementById("pirmasc2").addEventListener("mouseover", function () {
-    document.getElementById("pc2").style.display = "block";
-  });
-  document.getElementById("pirmasc2").addEventListener("mouseout", function () {
-    document.getElementById("pc2").style.display = "none";
-  });
-}
-
-var pirmasc3 = document.getElementById("pirmasc3");
-
-if (pirmasc3 !== null && pirmasc3 !== undefined) {
-  document.getElementById("pirmasc3").addEventListener("mouseover", function () {
-    document.getElementById("pc3").style.display = "block";
-  });
-  document.getElementById("pirmasc3").addEventListener("mouseout", function () {
-    document.getElementById("pc3").style.display = "none";
-  });
-}
-
-var antrasa1 = document.getElementById("antrasa1");
-
-if (antrasa1 !== null && antrasa1 !== undefined) {
-  document.getElementById("antrasa1").addEventListener("mouseover", function () {
-    document.getElementById("aa1").style.display = "block";
-  });
-  document.getElementById("antrasa1").addEventListener("mouseout", function () {
-    document.getElementById("aa1").style.display = "none";
-  });
-}
-
-var antrasa2 = document.getElementById("antrasa2");
-
-if (antrasa2 !== null && antrasa2 !== undefined) {
-  document.getElementById("antrasa2").addEventListener("mouseover", function () {
-    document.getElementById("aa2").style.display = "block";
-  });
-  document.getElementById("antrasa2").addEventListener("mouseout", function () {
-    document.getElementById("aa2").style.display = "none";
-  });
-}
-
-var antrasa3 = document.getElementById("antrasa3");
-
-if (antrasa3 !== null && antrasa3 !== undefined) {
-  document.getElementById("antrasa3").addEventListener("mouseover", function () {
-    document.getElementById("aa3").style.display = "block";
-  });
-  document.getElementById("antrasa3").addEventListener("mouseout", function () {
-    document.getElementById("aa3").style.display = "none";
-  });
-}
-
-var antrasb1 = document.getElementById("antrasb1");
-
-if (antrasb1 !== null && antrasb1 !== undefined) {
-  document.getElementById("antrasb1").addEventListener("mouseover", function () {
-    document.getElementById("ab1").style.display = "block";
-  });
-  document.getElementById("antrasb1").addEventListener("mouseout", function () {
-    document.getElementById("ab1").style.display = "none";
-  });
-}
-
-var antrasb2 = document.getElementById("antrasb2");
-
-if (antrasb2 !== null && antrasb2 !== undefined) {
-  document.getElementById("antrasb2").addEventListener("mouseover", function () {
-    document.getElementById("ab2").style.display = "block";
-  });
-  document.getElementById("antrasb2").addEventListener("mouseout", function () {
-    document.getElementById("ab2").style.display = "none";
-  });
-}
-
-var antrasb3 = document.getElementById("antrasb3");
-
-if (antrasb3 !== null && antrasb3 !== undefined) {
-  document.getElementById("antrasb3").addEventListener("mouseover", function () {
-    document.getElementById("ab3").style.display = "block";
-  });
-  document.getElementById("antrasb3").addEventListener("mouseout", function () {
-    document.getElementById("ab3").style.display = "none";
-  });
-}
-
-var antrasc1 = document.getElementById("antrasc1");
-
-if (antrasc1 !== null && antrasc1 !== undefined) {
-  document.getElementById("antrasc1").addEventListener("mouseover", function () {
-    document.getElementById("ac1").style.display = "block";
-  });
-  document.getElementById("antrasc1").addEventListener("mouseout", function () {
-    document.getElementById("ac1").style.display = "none";
-  });
-}
-
-var antrasc2 = document.getElementById("antrasc2");
-
-if (antrasc2 !== null && antrasc2 !== undefined) {
-  document.getElementById("antrasc2").addEventListener("mouseover", function () {
-    document.getElementById("ac2").style.display = "block";
-  });
-  document.getElementById("antrasc2").addEventListener("mouseout", function () {
-    document.getElementById("ac2").style.display = "none";
-  });
-}
-
-var antrasc3 = document.getElementById("antrasc3");
-
-if (antrasc3 !== null && antrasc3 !== undefined) {
-  document.getElementById("antrasc3").addEventListener("mouseover", function () {
-    document.getElementById("ac3").style.display = "block";
-  });
-  document.getElementById("antrasc3").addEventListener("mouseout", function () {
-    document.getElementById("ac3").style.display = "none";
-  });
-}
-
-var treciasa1 = document.getElementById("treciasa1");
-
-if (treciasa1 !== null && treciasa1 !== undefined) {
-  document.getElementById("treciasa1").addEventListener("mouseover", function () {
-    document.getElementById("ta1").style.display = "block";
-  });
-  document.getElementById("treciasa1").addEventListener("mouseout", function () {
-    document.getElementById("ta1").style.display = "none";
-  });
-}
-
-var treciasa2 = document.getElementById("treciasa2");
-
-if (treciasa2 !== null && treciasa2 !== undefined) {
-  document.getElementById("treciasa2").addEventListener("mouseover", function () {
-    document.getElementById("ta2").style.display = "block";
-  });
-  document.getElementById("treciasa2").addEventListener("mouseout", function () {
-    document.getElementById("ta2").style.display = "none";
-  });
-}
-
-var treciasa3 = document.getElementById("treciasa3");
-
-if (treciasa3 !== null && treciasa3 !== undefined) {
-  document.getElementById("treciasa3").addEventListener("mouseover", function () {
-    document.getElementById("ta3").style.display = "block";
-  });
-  document.getElementById("treciasa3").addEventListener("mouseout", function () {
-    document.getElementById("ta3").style.display = "none";
-  });
-}
-
-var treciasb1 = document.getElementById("treciasb1");
-
-if (treciasb1 !== null && treciasb1 !== undefined) {
-  document.getElementById("treciasb1").addEventListener("mouseover", function () {
-    document.getElementById("tb1").style.display = "block";
-  });
-  document.getElementById("treciasb1").addEventListener("mouseout", function () {
-    document.getElementById("tb1").style.display = "none";
-  });
-}
-
-var treciasb2 = document.getElementById("treciasb2");
-
-if (treciasb2 !== null && treciasb2 !== undefined) {
-  document.getElementById("treciasb2").addEventListener("mouseover", function () {
-    document.getElementById("tb2").style.display = "block";
-  });
-  document.getElementById("treciasb2").addEventListener("mouseout", function () {
-    document.getElementById("tb2").style.display = "none";
-  });
-}
-
-var treciasb3 = document.getElementById("treciasb3");
-
-if (treciasb3 !== null && treciasb3 !== undefined) {
-  document.getElementById("treciasb3").addEventListener("mouseover", function () {
-    document.getElementById("tb3").style.display = "block";
-  });
-  document.getElementById("treciasb3").addEventListener("mouseout", function () {
-    document.getElementById("tb3").style.display = "none";
-  });
-}
-
-var treciasc1 = document.getElementById("treciasc1");
-
-if (treciasc1 !== null && treciasc1 !== undefined) {
-  document.getElementById("treciasc1").addEventListener("mouseover", function () {
-    document.getElementById("tc1").style.display = "block";
-  });
-  document.getElementById("treciasc1").addEventListener("mouseout", function () {
-    document.getElementById("tc1").style.display = "none";
-  });
-}
-
-var treciasc2 = document.getElementById("treciasc2");
-
-if (treciasc2 !== null && treciasc2 !== undefined) {
-  document.getElementById("treciasc2").addEventListener("mouseover", function () {
-    document.getElementById("tc2").style.display = "block";
-  });
-  document.getElementById("treciasc2").addEventListener("mouseout", function () {
-    document.getElementById("tc2").style.display = "none";
-  });
-}
-
-var treciasc3 = document.getElementById("treciasc3");
-
-if (treciasc3 !== null && treciasc3 !== undefined) {
-  document.getElementById("treciasc3").addEventListener("mouseover", function () {
-    document.getElementById("tc3").style.display = "block";
-  });
-  document.getElementById("treciasc3").addEventListener("mouseout", function () {
-    document.getElementById("tc3").style.display = "none";
-  });
-}
-
-var ketvirtasa1 = document.getElementById("ketvirtasa1");
-
-if (ketvirtasa1 !== null && ketvirtasa1 !== undefined) {
-  document.getElementById("ketvirtasa1").addEventListener("mouseover", function () {
-    document.getElementById("ka1").style.display = "block";
-  });
-  document.getElementById("ketvirtasa1").addEventListener("mouseout", function () {
-    document.getElementById("ka1").style.display = "none";
-  });
-}
-
-var ketvirtasa2 = document.getElementById("ketvirtasa2");
-
-if (ketvirtasa2 !== null && ketvirtasa2 !== undefined) {
-  document.getElementById("ketvirtasa2").addEventListener("mouseover", function () {
-    document.getElementById("ka2").style.display = "block";
-  });
-  document.getElementById("ketvirtasa2").addEventListener("mouseout", function () {
-    document.getElementById("ka2").style.display = "none";
-  });
-}
-
-var ketvirtasa3 = document.getElementById("ketvirtasa3");
-
-if (ketvirtasa3 !== null && ketvirtasa3 !== undefined) {
-  document.getElementById("ketvirtasa3").addEventListener("mouseover", function () {
-    document.getElementById("ka3").style.display = "block";
-  });
-  document.getElementById("ketvirtasa3").addEventListener("mouseout", function () {
-    document.getElementById("ka3").style.display = "none";
-  });
-}
-
-var ketvirtasb1 = document.getElementById("ketvirtasb1");
-
-if (ketvirtasb1 !== null && ketvirtasb1 !== undefined) {
-  document.getElementById("ketvirtasb1").addEventListener("mouseover", function () {
-    document.getElementById("kb1").style.display = "block";
-  });
-  document.getElementById("ketvirtasb1").addEventListener("mouseout", function () {
-    document.getElementById("kb1").style.display = "none";
-  });
-}
-
-var ketvirtasb2 = document.getElementById("ketvirtasb2");
-
-if (ketvirtasb2 !== null && ketvirtasb2 !== undefined) {
-  document.getElementById("ketvirtasb2").addEventListener("mouseover", function () {
-    document.getElementById("kb2").style.display = "block";
-  });
-  document.getElementById("ketvirtasb2").addEventListener("mouseout", function () {
-    document.getElementById("kb2").style.display = "none";
-  });
-}
-
-var ketvirtasb3 = document.getElementById("ketvirtasb3");
-
-if (ketvirtasb3 !== null && ketvirtasb3 !== undefined) {
-  document.getElementById("ketvirtasb3").addEventListener("mouseover", function () {
-    document.getElementById("kb3").style.display = "block";
-  });
-  document.getElementById("ketvirtasb3").addEventListener("mouseout", function () {
-    document.getElementById("kb3").style.display = "none";
-  });
-}
-
-var ketvirtasc1 = document.getElementById("ketvirtasc1");
-
-if (ketvirtasc1 !== null && ketvirtasc1 !== undefined) {
-  document.getElementById("ketvirtasc1").addEventListener("mouseover", function () {
-    document.getElementById("kc1").style.display = "block";
-  });
-  document.getElementById("ketvirtasc1").addEventListener("mouseout", function () {
-    document.getElementById("kc1").style.display = "none";
-  });
-}
-
-var ketvirtasc2 = document.getElementById("ketvirtasc2");
-
-if (ketvirtasc2 !== null && ketvirtasc2 !== undefined) {
-  document.getElementById("ketvirtasc2").addEventListener("mouseover", function () {
-    document.getElementById("kc2").style.display = "block";
-  });
-  document.getElementById("ketvirtasc2").addEventListener("mouseout", function () {
-    document.getElementById("kc2").style.display = "none";
-  });
-}
-
-var ketvirtasc3 = document.getElementById("ketvirtasc3");
-
-if (ketvirtasc3 !== null && ketvirtasc3 !== undefined) {
-  document.getElementById("ketvirtasc3").addEventListener("mouseover", function () {
-    document.getElementById("kc3").style.display = "block";
-  });
-  document.getElementById("ketvirtasc3").addEventListener("mouseout", function () {
-    document.getElementById("kc3").style.display = "none";
-  });
-}
-
-$(document).on('mousemove', function (e) {
-  $('#house1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#house2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#house3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#house4').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#house5').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pirmo1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pirmo2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pirmo3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#antro1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#antro2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#antro3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#trecio1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#trecio2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#trecio3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ketvirto1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ketvirto2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ketvirto3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 120
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pirmaskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#antraskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#treciaskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ketvirtaskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#penktaskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#sestaskotedzas').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pa1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pa2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pa3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pb1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pb2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pb3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pc1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pc2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#pc3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#aa1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#aa2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#aa3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ab1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ab2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ab3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ac1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ac2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ac3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ta1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ta2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ta3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tb1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tb2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tb3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tc1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tc2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#tc3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ka1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ka2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#ka3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kb1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kb2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kb3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kc1').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kc2').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-$(document).on('mousemove', function (e) {
-  $('#kc3').css({
-    left: e.pageX - 45,
-    top: e.pageY - 130
-  });
-});
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/assets/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/assets/sass/app.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
 /******/ })()
 ;

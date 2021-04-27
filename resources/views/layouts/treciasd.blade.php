@@ -1,73 +1,56 @@
 @extends('layouts.master')
 @section('main')
-<div class="selectbar">
-  <div class="namai">
-    <h3>Namai:</h3>
-    <ul>
-    <a href="/pirmasd"><li>namas nr.1</li></a>
-    <a href="/antrasd"><li>namas nr.2</li></a>
-    <a href="/treciasd"><li class="active">namas nr.3</li></a>
-    <a href="/ketvirtasd"><li>namas nr.4</li></a>
-    </ul>
-  </div>
-  <div class="aukstai">
-    <h3>Aukštai:</h3>
-    <ul>
-    <a href="/3/1"><li>1a.</li></a>
-    <a href="/3/2"><li>2a.</li></a>
-    <a href="/3/3"><li>3a.</li></a>
-    </ul>
-  </div>
-</div>
+  @include('layouts._partials/selectbar')
 <div id="daugiabuciai">
 <img id="mobile-only" src="{{asset('images\treciasd.jpg')}}">
   <div id="mainsection">
     <div id="bar" class="klase">
       <svg viewBox="0 0 1920 1080" class="select-svg-main mobile-none svg-defection" xml:space="preserve" version="1.1" height="100" width="100" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
       <image height="1080" width="100%" id="mainpic" xlink:href="{{asset('images\treciasd.jpg')}}"  />
-      <a href="{{route('treciotrecias')}}"><path style="fill:transparent;opacity:0.4"  d="M 232.83582,390.44776 861.49254,82.38806 1174.9254,420.89552 1173.1343,539.10448 827.46269,406.56716 232.83582,544.47761 Z" id="trecio3a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('trecioantras')}}"><path style="fill:transparent;opacity:0.4"  d="M 1173.1343,539.10448 1169.5522,678.80597 827.46269,644.77612 234.62687,671.64179 232.83582,544.47761 827.46269,406.56716 Z" id="trecio2a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('treciopirmas')}}"><path style="fill:transparent;opacity:0.4"  d="m 1169.5522,678.80597 5.3732,94.92537 -308.05973,91.34329 -42.98507,-3.58209 -220.29851,-16.11941 -374.32836,-50.14925 5.37314,-123.58209 592.83582,-26.86567 z" id="trecio1a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/3/3"><path style="fill:transparent;opacity:0.4"  d="M 232.83582,390.44776 861.49254,82.38806 1174.9254,420.89552 1173.1343,539.10448 827.46269,406.56716 232.83582,544.47761 Z" class="mouseListener" id="trecio3a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/3/2"><path style="fill:transparent;opacity:0.4"  d="M 1173.1343,539.10448 1169.5522,678.80597 827.46269,644.77612 234.62687,671.64179 232.83582,544.47761 827.46269,406.56716 Z" class="mouseListener" id="trecio2a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/3/1"><path style="fill:transparent;opacity:0.4"  d="m 1169.5522,678.80597 5.3732,94.92537 -308.05973,91.34329 -42.98507,-3.58209 -220.29851,-16.11941 -374.32836,-50.14925 5.37314,-123.58209 592.83582,-26.86567 z" class="mouseListener" id="trecio1a" inkscape:connector-curvature="0"></path></a>
        </svg>
    </div>
   </div>
 </div>
+<div class="showPopup" id="trecio3" style="display: none;">
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>3 Aukstas</li>
+      <li class="laisvas3" id='trecio3alaisvu'></li>
+      <li class="rezervuotas3" id='trecio3arezervuotu'></li>
+      <li class="parduotas3" id='trecio3aparduotu'></li>
+    </ul>
+  </div>
+</div>
+<div class="showPopup" id="trecio2" style="display: none;">
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>2 Aukstas</li>
+      <li class="laisvas3" id='trecio2alaisvu'></li>
+      <li class="rezervuotas3" id='trecio2arezervuotu'></li>
+      <li class="parduotas3" id='trecio2aparduotu'></li>
+    </ul>
+  </div>
+</div>
 
-<div  id="trecio1" style="display: none" >
+<div class="showPopup" id="trecio1" style="display: none" >
 <div class="popup">
   <img src="{{ asset('/images/namukas.png') }}">
     <ul>
       <li>1 Aukstas</li>
-      <li id='trecio1alaisvu'></li>
-      <li id='trecio1arezervuotu'></li>
-      <li id='trecio1aparduotu'></li>
+      <li class="laisvas3" id='trecio1alaisvu'></li>
+      <li class="rezervuotas3" id='trecio1arezervuotu'></li>
+      <li class="parduotas3" id='trecio1aparduotu'></li>
     </ul>
   </div>
 </div>
 
-<div  id="trecio2" style="display: none;">
-  <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>2 Aukstas</li>
-      <li id='trecio2alaisvu'></li>
-      <li id='trecio2arezervuotu'></li>
-      <li id='trecio2aparduotu'></li>
-    </ul>
-  </div>
-</div>
 
-<div  id="trecio3" style="display: none;">
-  <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>3 Aukstas</li>
-      <li id='trecio3alaisvu'></li>
-      <li id='trecio3arezervuotu'></li>
-      <li id='trecio3aparduotu'></li>
-    </ul>
-  </div>
-</div>
+
 
 
 

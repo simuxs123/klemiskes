@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/resources/assets/js/app.min.js": "/resources/assets/js/app.min.js",
     "/resources/assets/sass/app.min.scss": "/resources/assets/sass/app.min.scss"
 }

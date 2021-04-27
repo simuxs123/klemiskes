@@ -1,73 +1,56 @@
 @extends('layouts.master')
 @section('main')
-<div class="selectbar">
-  <div class="namai">
-    <h3>Namai:</h3>
-    <ul>
-    <a href="/pirmasd"><li>namas nr.1</li></a>
-    <a href="/antrasd"><li>namas nr.2</li></a>
-    <a href="/treciasd"><li>namas nr.3</li></a>
-    <a href="/ketvirtasd"><li class="active">namas nr.4</li></a>
-    </ul>
-  </div>
-  <div class="aukstai">
-    <h3>Aukštai:</h3>
-    <ul>
-    <a href="/4/1"><li>1a.</li></a>
-    <a href="/4/2"><li>2a.</li></a>
-    <a href="/4/3"><li>3a.</li></a>
-    </ul>
-  </div>
-</div>
+    @include('layouts._partials/selectbar')
 <div id="daugiabuciai">
 <img id="mobile-only" src="{{asset('images\ketvirtasd.jpg')}}">
   <div id="mainsection">
     <div id="bar" class="klase">
       <svg viewBox="0 0 1920 1080" class="select-svg-main mobile-none svg-defection" xml:space="preserve" version="1.1" height="100" width="100" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
       <image height="1080" width="100%" id="mainpic" xlink:href="{{asset('images\ketvirtasd.jpg')}}"  />
-      <a href="{{route('ketvirtotrecias')}}"><path style="fill:transparent;opacity:0.4"  d="M 420.89552,463.8806 1146.2687,26.865672 1354.0299,467.46269 1352.2388,583.8806 1090.7463,424.47761 417.31343,614.32836 Z" id="ketvirto3a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('ketvirtoantras')}}"><path style="fill:transparent;opacity:0.4"  d="M 1352.2388,583.8806 V 739.70149 L 1094.3284,705.67164 420.89552,737.91045 417.31343,614.32836 1090.7463,424.47761 Z" id="ketvirto2a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('ketvirtopirmas')}}"><path style="fill:transparent;opacity:0.4"  d="M 1352.2388,739.70149 V 856.1194 l -202.3881,132.53732 -57.3134,-8.95523 -673.43282,-128.95522 1.79104,-112.83582 673.43288,-32.23881 z" id="ketvirto1a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/4/3"><path style="fill:transparent;opacity:0.4"  d="M 420.89552,463.8806 1146.2687,26.865672 1354.0299,467.46269 1352.2388,583.8806 1090.7463,424.47761 417.31343,614.32836 Z" class="mouseListener" id="ketvirto3a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/4/2"><path style="fill:transparent;opacity:0.4"  d="M 1352.2388,583.8806 V 739.70149 L 1094.3284,705.67164 420.89552,737.91045 417.31343,614.32836 1090.7463,424.47761 Z" class="mouseListener" id="ketvirto2a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/4/1"><path style="fill:transparent;opacity:0.4"  d="M 1352.2388,739.70149 V 856.1194 l -202.3881,132.53732 -57.3134,-8.95523 -673.43282,-128.95522 1.79104,-112.83582 673.43288,-32.23881 z" class="mouseListener" id="ketvirto1a" inkscape:connector-curvature="0"></path></a>
        </svg>
    </div>
   </div>
 </div>
-
-<div  id="ketvirto1" style="display: none" >
-<div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>1 Aukstas</li>
-      <li id='ketvirto1alaisvu'></li>
-      <li id='ketvirto1arezervuotu'></li>
-      <li id='ketvirto1aparduotu'></li>
-    </ul>
-  </div>
-</div>
-
-<div  id="ketvirto2" style="display: none;">
+<div class="showPopup" id="ketvirto3" style="display: none;">
   <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>2 Aukstas</li>
-      <li id='ketvirto2alaisvu'></li>
-      <li id='ketvirto2arezervuotu'></li>
-      <li id='ketvirto2aparduotu'></li>
-    </ul>
-  </div>
-</div>
-
-<div  id="ketvirto3" style="display: none;">
-  <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
+    <img src="{{ asset('/images/namukas.png') }}">
     <ul>
       <li>3 Aukstas</li>
-      <li id='ketvirto3alaisvu'></li>
-      <li id='ketvirto3arezervuotu'></li>
-      <li id='ketvirto3aparduotu'></li>
+      <li class="laisvas4" id='ketvirto3alaisvu'></li>
+      <li class="rezervuotas4" id='ketvirto3arezervuotu'></li>
+      <li class="parduotas4" id='ketvirto3aparduotu'></li>
     </ul>
   </div>
 </div>
+<div class="showPopup" id="ketvirto2" style="display: none;">
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>2 Aukstas</li>
+      <li class="laisvas4" id='ketvirto2alaisvu'></li>
+      <li class="rezervuotas4" id='ketvirto2arezervuotu'></li>
+      <li class="parduotas4" id='ketvirto2aparduotu'></li>
+    </ul>
+  </div>
+</div>
+
+<div class="showPopup" id="ketvirto1" style="display: none" >
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>1 Aukstas</li>
+      <li class="laisvas4" id='ketvirto1alaisvu'></li>
+      <li class="rezervuotas4" id='ketvirto1arezervuotu'></li>
+      <li class="parduotas4" id='ketvirto1aparduotu'></li>
+    </ul>
+  </div>
+</div>
+
+
+
 
 
 <script type="text/javascript">

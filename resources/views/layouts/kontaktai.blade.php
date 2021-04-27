@@ -75,69 +75,72 @@
   </div>
 </div>
 
-<script type="text/javascript">
-$(function() {
-  $('#akontaktai').addClass('active');
-});
-</script>
-<script type="text/javascript">
-$(function() {
-  var url = location.pathname;
-  var kontaktai = '/kontaktai';
+{{--<script type="text/javascript">--}}
+{{--$(function() {--}}
+{{--  $('#akontaktai').addClass('active'); //js faile padaryt dinamini--}}
+{{--});--}}
+{{--</script>--}}
 
-  if(kontaktai == url){
-    $('#mainsection').css('display') == 'block';
-  }   
-});
-  
-</script>
-<script type="text/javascript">
-  $(function() {
-  $('.contacts').submit(function(event) {
-        event.preventDefault();
-        $('.loading').show();
-        var form = $(this);
-        var data = new FormData($(this)[0]);
-        var url = form.attr("action");
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: data,
-            async: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if((data.errors)){
-                    if (data.errors.name) {
-                        $('#name + .error').removeClass('hidden');
-                        $('#name + .error').text(data.errors.name);
-                    }                    
-                    if (data.errors.email) {
-                        $('#mail + .error').removeClass('hidden');
-                        $('#mail + .error').text(data.errors.email);
-                    }
-                    if (data.errors.question) {
-                        $('#number + .error').removeClass('hidden');
-                        $('#number + .error').text(data.errors.quey);
-                    }
-                    if (data.errors.question) {
-                        $('#uzklausa + .error').removeClass('hidden');
-                        $('#uzklausa + .error').text(data.errors.quey);
-                    }
-                } else {                    
-                    $('.error').remove();
-                    $('.popup').slideDown(function() {
-                        setTimeout(function() {
-                            $('.popup').slideUp();
-                        }, 5000);
-                    });
-                    $('button').trigger('click');
-                }
+@endsection
+@section('script')
+    <script type="text/javascript">
+        $(function() {
+            var url = location.pathname;
+            var kontaktai = '/kontaktai';
+
+            if(kontaktai == url){
+                $('#mainsection').css('display') == 'block';
             }
         });
-    });
 
-});
-</script>
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('.contacts').submit(function(event) {
+                event.preventDefault();
+                $('.loading').show();
+                var form = $(this);
+                var data = new FormData($(this)[0]);
+                var url = form.attr("action");
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    async: true,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if((data.errors)){
+                            if (data.errors.name) {
+                                $('#name + .error').removeClass('hidden');
+                                $('#name + .error').text(data.errors.name);
+                            }
+                            if (data.errors.email) {
+                                $('#mail + .error').removeClass('hidden');
+                                $('#mail + .error').text(data.errors.email);
+                            }
+                            if (data.errors.question) {
+                                $('#number + .error').removeClass('hidden');
+                                $('#number + .error').text(data.errors.quey);
+                            }
+                            if (data.errors.question) {
+                                $('#uzklausa + .error').removeClass('hidden');
+                                $('#uzklausa + .error').text(data.errors.quey);
+                            }
+                        } else {
+                            $('.error').remove();
+                            $('.popup').slideDown(function() {
+                                setTimeout(function() {
+                                    $('.popup').slideUp();
+                                }, 5000);
+                            });
+                            $('button').trigger('click');
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
 @endsection

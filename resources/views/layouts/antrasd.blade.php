@@ -1,74 +1,52 @@
 @extends('layouts.master')
 @section('main')
-<div class="selectbar">
-  <div class="namai">
-    <h3>Namai:</h3>
-    <ul>
-    <a href="/pirmasd"><li>namas nr.1</li></a>
-    <a href="/antrasd"><li class="active">namas nr.2</li></a>
-    <a href="/treciasd"><li>namas nr.3</li></a>
-    <a href="/ketvirtasd"><li>namas nr.4</li></a>
-    </ul>
-  </div>
-  <div class="aukstai">
-    <h3>Aukštai:</h3>
-    <ul>
-    <a href="/2/1"><li>1a.</li></a>
-    <a href="/2/2"><li>2a.</li></a>
-    <a href="/2/3"><li>3a.</li></a>
-    </ul>
-  </div>
-</div>
+    @include('layouts._partials/selectbar')
 <div id="daugiabuciai">
 <img id="mobile-only" src="{{asset('images\antrasd.jpg')}}">
   <div id="mainsection">
     <div id="bar" class="klase">
       <svg viewBox="0 0 1920 1080" class="select-svg-main mobile-none svg-defection" xml:space="preserve" version="1.1" height="100" width="100" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
       <image height="1080" width="100%" id="mainpic" xlink:href="{{asset('images\antrasd.jpg')}}"  />
-      <a href="{{route('antrotrecias')}}"><path style="fill:transparent;opacity:0.4"  d="M 530.14925,469.25373 1151.6418,35.820896 1474.0299,422.68657 1472.2388,555.22388 1110.4478,395.8209 528.35821,614.32836 Z" id="antro3a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('antroantras')}}"><path style="fill:transparent;opacity:0.4"  d="M 530.14925,725.37313 528.35821,614.32836 1110.4478,395.8209 1472.2388,555.22388 1470.4478,720 1105.0746,662.68657 Z" id="antro2a" inkscape:connector-curvature="0"></path></a>
-      <a href="{{route('antropirmas')}}"><path style="fill:transparent;opacity:0.4"  d="m 1470.4478,720 3.5821,123.58209 -320.5971,85.97015 -44.7761,-10.74627 -245.37312,-34.02985 -333.13433,-55.52239 v -103.8806 l 574.92535,-62.68656 z" id="antro1a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/2/3"><path style="fill:transparent;opacity:0.4"  d="M 530.14925,469.25373 1151.6418,35.820896 1474.0299,422.68657 1472.2388,555.22388 1110.4478,395.8209 528.35821,614.32836 Z" class="mouseListener" id="antro3a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/2/2"><path style="fill:transparent;opacity:0.4"  d="M 530.14925,725.37313 528.35821,614.32836 1110.4478,395.8209 1472.2388,555.22388 1470.4478,720 1105.0746,662.68657 Z" class="mouseListener" id="antro2a" inkscape:connector-curvature="0"></path></a>
+      <a href="/namas/2/1"><path style="fill:transparent;opacity:0.4"  d="m 1470.4478,720 3.5821,123.58209 -320.5971,85.97015 -44.7761,-10.74627 -245.37312,-34.02985 -333.13433,-55.52239 v -103.8806 l 574.92535,-62.68656 z" class="mouseListener" id="antro1a" inkscape:connector-curvature="0"></path></a>
        </svg>
    </div>
   </div>
 </div>
-
-<div  id="antro1" style="display: none" >
-<div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>1 Aukstas</li>
-      <li id='antro1alaisvu'></li>
-      <li id='antro1arezervuotu'></li>
-      <li id='antro1aparduotu'></li>
-    </ul>
-  </div>
-</div>
-
-<div  id="antro2" style="display: none;">
+<div class="showPopup" id="antro3" style="display: none;">
   <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
-    <ul>
-      <li>2 Aukstas</li>
-      <li id='antro2alaisvu'></li>
-      <li id='antro2arezervuotu'></li>
-      <li id='antro2aparduotu'></li>
-    </ul>
-  </div>
-</div>
-
-<div  id="antro3" style="display: none;">
-  <div class="popup">
-  <img src="{{ asset('/images/namukas.png') }}">
+    <img src="{{ asset('/images/namukas.png') }}">
     <ul>
       <li>3 Aukstas</li>
-      <li id='antro3alaisvu'></li>
-      <li id='antro3arezervuotu'></li>
-      <li id='antro3aparduotu'></li>
+      <li class="laisvas2" id='antro3alaisvu'></li>
+      <li class="rezervuotas2" id='antro3arezervuotu'></li>
+      <li class="parduotas2" id='antro3aparduotu'></li>
     </ul>
   </div>
 </div>
-
+<div class="showPopup" id="antro2" style="display: none;">
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>2 Aukstas</li>
+      <li class="laisvas2" id='antro2alaisvu'></li>
+      <li class="rezervuotas2" id='antro2arezervuotu'></li>
+      <li class="parduotas2" id='antro2aparduotu'></li>
+    </ul>
+  </div>
+</div>
+<div class="showPopup" id="antro1" style="display: none" >
+  <div class="popup">
+    <img src="{{ asset('/images/namukas.png') }}">
+    <ul>
+      <li>1 Aukstas</li>
+      <li class="laisvas2" id='antro1alaisvu'></li>
+      <li class="rezervuotas2" id='antro1arezervuotu'></li>
+      <li class="parduotas2" id='antro1aparduotu'></li>
+    </ul>
+  </div>
+</div>
 
 
 <script type="text/javascript">

@@ -12,7 +12,7 @@ let mix = require("laravel-mix");
  */
 
 mix
-  .browserSync("mano.dev")
+   // .browserSync("mano.dev")
   .js("resources/assets/js/app.js", "public/js")
   .sass("resources/assets/sass/app.scss", "public/css")
   .minify(["resources/assets/js/app.js"])

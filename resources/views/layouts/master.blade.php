@@ -13,20 +13,21 @@
     <meta property="og:description" content="Parduodami butai/kotedžai klemiškės g. Klaipėda" />
     <title>Klemiškės namai</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('/css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     </head>
   <body >
-    @include('layouts.header')
+    @include('layouts._partials.header')
     <section>
         @yield('main')
     </section>
 
-        
+    @include('layouts._partials.footer')
 
-    
-    @include('layouts.footer')
-     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    @yield('script')
   </body>
 </html>
